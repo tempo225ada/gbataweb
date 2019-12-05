@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Identifiant</th>
+                <th scope="col">Commune</th>
+            </tr>
+            </thead>
+    {% for commune in communes %}
+            <tbody>
+            <tr>
+                <td> {{ commune.id }} </td>
+                <td> {{ commune.nom }} </td>
+            </tr>
+            </tbody>
+    {% endfor %}
+        </table>
+    </div>
+{% endblock %}
