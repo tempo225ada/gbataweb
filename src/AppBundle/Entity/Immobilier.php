@@ -51,6 +51,14 @@ class Immobilier
     private $bienType;
 
     /**
+     *
+     * @ORM\ManyToOne(targetEntity="Commune")
+     * @ORM\JoinColumn(name ="commune_id", referencedColumnName="id")
+     */
+
+    private $commune;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="prix", type="integer")
@@ -85,6 +93,32 @@ class Immobilier
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $imageImmo;
+
+    /**
+     * @return string
+     */
+    public function getImageImmo()
+    {
+        return $this->imageImmo;
+    }
+
+    /**
+     * @param string $imageImmo
+     *
+     * @return  Immobilier
+     */
+    public function setImageImmo($imageImmo)
+    {
+        $this->imageImmo = $imageImmo;
+        return $this;
+    }
 
 
     /**

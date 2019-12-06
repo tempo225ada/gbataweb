@@ -1,0 +1,38 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Type</th>
+                <th scope="col">Bien</th>
+                <th scope="col">Type Bien</th>
+                <th scope="col">Commune</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Pièces</th>
+            </tr>
+            </thead>
+            {% for immobilier in immobiliers %}
+                <tbody>
+                <tr>
+                    <td> {{ immobilier.id }} </td>
+                    <td> {{ immobilier.titre }} </td>
+                    <td> {{ immobilier.type }} </td>
+                    <td> {{ immobilier.bien }} </td>
+                    <td> {{ immobilier.bienType }} </td>
+                    <td> {{ immobilier.commune}} </td>
+                    <td> {{ immobilier.prix}} </td>
+                    <td> {{ immobilier.piece }} </td>
+
+                </tr>
+                </tbody>
+
+        {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

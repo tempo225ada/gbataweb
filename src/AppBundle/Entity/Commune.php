@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commune
 {
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
     /**
      * @var int
      *

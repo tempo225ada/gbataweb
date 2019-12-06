@@ -21,6 +21,7 @@ class CommuneController	extends Controller {
 
         //Vérification du formulaire
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
             $em->persist($commune);
