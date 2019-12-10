@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Immobilier;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,14 +18,24 @@ class ImmobilierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('titre')
-                ->add('type')
-                ->add('bien')
-                ->add('bienType')
+                ->add('type', ChoiceType::class, [
+                    'choices' => [
+                        'Location' => 'location',
+                        'Vente' => 'vente'
+                    ]
+                ])
+                ->add('bien', ChoiceType::class, [
+                    'choices' => [
+                        'Maison' => 'maison',
+                        'Terrain' => 'terrain'
+                    ]
+                ])
+                ->add('typebien')
                 ->add('commune')
-                ->add('prix')
                 ->add('piece')
                 ->add('chambre')
                 ->add('douche')
+                ->add('prix')
                 ->add('description')
                 ->add('image', FileType::class, [
                     'label' => 'Image (jpeg ou jpg)',

@@ -1,0 +1,28 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+    <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Type offre</th>
+        <th scope="col">Nom</th>
+    </tr>
+    </thead>
+
+    {% for type_bien in type_biens %}
+
+        <tbody>
+        <tr>
+            <td> {{ type_bien.id }} </td>
+            <td> {{ type_bien.type}} </td>
+            <td> {{ type_bien.designation}} </td>
+        </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+    </div>
+
+{% endblock %}

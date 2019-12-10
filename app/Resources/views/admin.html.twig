@@ -21,7 +21,8 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="/add/immobilier">Immobilier </a>
                                     <a class="dropdown-item" href="/add/commune">Commune</a>
-                                    <a class="dropdown-item" href="#">Autres </a>
+                                    <a class="dropdown-item" href="/add/typebien">Type Bien</a>
+                                    <a class="dropdown-item" href="/add/demande/immo">Demandee</a>
                                 </div>
                             </li>
 
@@ -32,6 +33,9 @@
                                 <a class="nav-link pl-0" href="/list/commune">Commune</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link pl-0" href="/add/list/typebien">Type Bien</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link pl-0" href="#">Profile</a>
                             </li>
                             <!-- Insérez ici le reste de votre menu -->
@@ -40,12 +44,10 @@
                 </nav>
             </aside>
             <main class="col">
+
                 {% block body %}
 
-
-
                 {% endblock %}
-
 
                 {% block javascripts %}
 

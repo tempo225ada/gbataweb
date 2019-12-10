@@ -17,6 +17,7 @@ class Commune
     {
         return $this->nom;
     }
+
     /**
      * @var int
      *
