@@ -14,6 +14,7 @@
                 <th scope="col">Commune</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Pièces</th>
+                <th scope="col">Action</th>
             </tr>
             </thead>
             {% for immobilier in immobiliers %}
@@ -27,6 +28,10 @@
                     <td> {{ immobilier.commune}} </td>
                     <td> {{ immobilier.prix}} </td>
                     <td> {{ immobilier.piece }} </td>
+                    <td> <a href="{{ path('admin_immoiblier_edit',{
+                                id:immobilier.id
+                        })
+                        }}">Modifier</a> </td>
 
                 </tr>
                 </tbody>

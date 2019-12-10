@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Immobilier
 {
+
     /**
      * @var int
      *
@@ -123,7 +124,6 @@ class Immobilier
         $this->imageImmo = $imageImmo;
         return $this;
     }
-
 
     /**
      * Get id

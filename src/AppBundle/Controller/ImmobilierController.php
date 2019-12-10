@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\AppBundle;
 use AppBundle\Entity\Immobilier;
 use AppBundle\Form\ImmobilierType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -88,5 +89,35 @@ class ImmobilierController extends Controller
         return $this->render('admin/immobilier_list.html.twig', [
             'immobiliers' => $immobiliers
         ]);
+    }
+
+    /**
+     * @Route("/admin/immobilier/{id}/edit", name="admin_immoiblier_edit")
+     * @param Immobilier $immobilier
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function edit( Immobilier $immobilier, Request $request, EntityManagerInterface $em) {
+
+        $form = $this->createForm(ImmobilierType::class, $immobilier);
+
+        $form->handleRequest($request);
+
+        if ( $form->isSubmitted() && $form->isValid()) {
+
+            $immobilier = $form->getData();
+            $em->persist($immobilier);
+            $em->flush();
+
+            return $this->redirectToRoute(admin_list_immo);
+
+        }
+
+        return $this->render('/admin/edit_immobilier.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+
     }
 }
