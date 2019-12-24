@@ -34,4 +34,20 @@ class DemandeImmoController extends Controller
         ]);
 
     }
+
+    /**
+     * @Route("/admin/list/demande/immo", name="admin_list_demande_immo")
+     * @return string
+     */
+
+    public function list() {
+
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository(DemandeImmo::class);
+        $demande = $repository->findAll();
+
+        return $this->render('admin/list/list_demande_immo.html.twig', [
+            'demandes' => $demande
+        ]);
+    }
 }

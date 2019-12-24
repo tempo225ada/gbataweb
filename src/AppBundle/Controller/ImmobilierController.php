@@ -71,7 +71,7 @@ class ImmobilierController extends Controller
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
         $immobiliers = $repository->findAll();
-        return $this->render('pages/immobilier_list.html.twig', [
+        return $this->render('pages/list_immobilier.html.twig', [
             'immobiliers' => $immobiliers
         ]);
 
@@ -86,13 +86,13 @@ class ImmobilierController extends Controller
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
         $immobiliers = $repository->findAll();
-        return $this->render('admin/immobilier_list.html.twig', [
+        return $this->render('admin/list/list_immobilier.html.twig', [
             'immobiliers' => $immobiliers
         ]);
     }
 
     /**
-     * @Route("/admin/immobilier/{id}/edit", name="admin_immoiblier_edit")
+     * @Route("/admin/immobilier/{id}/edit", name="admin_immobilier_edit")
      * @param Immobilier $immobilier
      * @param Request $request
      * @param EntityManagerInterface $em
@@ -110,11 +110,11 @@ class ImmobilierController extends Controller
             $em->persist($immobilier);
             $em->flush();
 
-            return $this->redirectToRoute(admin_list_immo);
+            return $this->redirectToRoute('admin_list_immo');
 
         }
 
-        return $this->render('/admin/edit_immobilier.html.twig', [
+        return $this->render('/admin/edit/edit_immobilier.html.twig', [
             'form' => $form->createView()
         ]);
 

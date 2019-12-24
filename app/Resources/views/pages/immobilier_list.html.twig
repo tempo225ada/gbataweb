@@ -5,7 +5,7 @@
 
         {% for immobilier in immobiliers %}
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="col-sm-12">
                     <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" />
                 </div>
@@ -13,7 +13,7 @@
                 <div class="col-sm-12">
                     <div class="col-sm-3"> {{ immobilier.type }} </div>
                     <div class="col-sm-3"> {{ immobilier.bien }} </div>
-                    <div class="col-sm-3"> {{ immobilier.bienType }} </div>
+                    <div class="col-sm-3"> {{ immobilier.typebien }} </div>
                     <div class="col-sm-3"> {{ immobilier.commune}} </div>
                 </div>
                 <div class="col-sm-12">

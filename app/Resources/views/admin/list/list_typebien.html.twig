@@ -19,6 +19,11 @@
             <td> {{ type_bien.id }} </td>
             <td> {{ type_bien.type}} </td>
             <td> {{ type_bien.designation}} </td>
+            <td> <a href="{{ path('admin_type_edit',{
+                    id:type_bien.id
+                })
+                }}">Modifier</a> </td>
+
         </tr>
         </tbody>
     {% endfor %}
