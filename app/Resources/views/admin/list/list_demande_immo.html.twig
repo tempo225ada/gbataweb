@@ -10,7 +10,7 @@
                     <th scope="col">Type bien</th>
                     <th scope="col">Commune</th>
                     <th scope="col">Nombre de pièces</th>
-                    <th scope="col">Budget/th>
+                    <th scope="col">Budget</th>
                 </tr>
             </thead>
             {% for demande in demandes %}
@@ -21,7 +21,7 @@
                         <td> {{ demande.commune}} </td>
                         <td> {{ demande.piece}} </td>
                         <td> {{ demande.budget }} </td>
-                        <td> <a href="{{ path('admin_commune_edit',{ id:demande.id}) }}">
+                        <td> <a href="{{ path('admin_demande_immo_edit',{ id:demande.id}) }}">
                                 Modifier</a> </td>
                     </tr>
                 </tbody>

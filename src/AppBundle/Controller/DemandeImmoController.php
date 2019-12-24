@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\DemandeImmo;
 use AppBundle\Form\DemandeImmoType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,5 +50,32 @@ class DemandeImmoController extends Controller
         return $this->render('admin/list/list_demande_immo.html.twig', [
             'demandes' => $demande
         ]);
+    }
+
+    /**
+     * @Route("/admin/demande/immo/{id}/edit", name="admin_demande_immo_edit")
+     * @param DemandeImmo $demandeImmo
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+
+    public function edit(DemandeImmo $demandeImmo, Request $request, EntityManagerInterface $em) {
+
+        $form = $this->createForm(DemandeImmoType::class, $demandeImmo);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $demandeImmo= $form->getData();
+            $em->persist($demandeImmo);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_list_demande_immo');
+        }
+
+        return $this->render('admin/edit/edit_demande_immo.html.twig', [
+           'form'=>$form->createView()
+        ]);
+
     }
 }
