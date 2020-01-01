@@ -71,6 +71,7 @@ class ImmobilierController extends Controller
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
         $immobiliers = $repository->findAll();
+
         return $this->render('pages/immobilier_list.html.twig', [
             'immobiliers' => $immobiliers
         ]);
