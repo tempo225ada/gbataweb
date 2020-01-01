@@ -1,0 +1,14 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        {{ form_start(form) }}
+        {{ form_row(form.type) }}
+
+        {{ form_row(form.designation) }}
+
+        <button type="submit">Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

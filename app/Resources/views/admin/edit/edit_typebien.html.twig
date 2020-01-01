@@ -1,0 +1,14 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.type) }}
+    {{ form_row(form.designation) }}
+
+
+    <button type="submit">Modifier</button>
+
+    {{ form_end(form) }}
+{% endblock %}

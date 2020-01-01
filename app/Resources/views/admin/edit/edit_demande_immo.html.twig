@@ -1,0 +1,15 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <div class="container my-4">
+        {{ form_start(form) }}
+        {{ form_row(form.type) }}
+        {{ form_row(form.typebien) }}
+        {{ form_row(form.commune) }}
+        {{ form_row(form.piece) }}
+        {{ form_row(form.budget) }}
+        <button type="submit">Modifier</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
