@@ -4,15 +4,8 @@ security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        database_users:
-            entity:
-                class: AppBundle\Entity\User
-                property: username
-
-    encoders:
-        AppBundle\Entity\User:
-            algorithm: bcrypt
-            cost: 15
+        in_memory:
+            memory: ~
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -28,11 +21,4 @@ security:
             #http_basic: ~
 
             # https://symfony.com/doc/current/security/form_login_setup.html
-            form_login:
-                login_path: login
-                check_path: login
-                csrf_token_generator: security.csrf.token_manager
-                csrf_token_id: a_private_string
-
-    access_control:
-        - {path: '^/admin', roles: ROLE_ADMIN}
+            #form_login: ~

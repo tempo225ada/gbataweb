@@ -2,11 +2,13 @@
 
 {% block body %}
  <div class="container">
-    {{ form_start(form) }}
-        {{ form_row(form.nom) }}
+     <div class="row">
+        {{ form_start(form) }}
+            {{ form_row(form.nom) }}
 
-        <button type="submit">Enregistrer</button>
-    {{ form_end(form) }}
+            <button type="submit">Enregistrer</button>
+        {{ form_end(form) }}
+     </div>
  </div>
 
 {% endblock %}
