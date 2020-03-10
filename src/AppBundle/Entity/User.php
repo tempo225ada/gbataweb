@@ -46,6 +46,11 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
+    public function __toString()
+    {
+        return $this->username;
+    }
+
     public function __construct()
     {
         $this->isActive = true;

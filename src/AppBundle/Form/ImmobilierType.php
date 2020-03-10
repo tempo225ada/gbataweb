@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class ImmobilierType extends AbstractType
 {
@@ -37,6 +38,7 @@ class ImmobilierType extends AbstractType
                 ->add('douche')
                 ->add('prix')
                 ->add('description')
+                ->add('utilisateur',HiddenType::class)
                 ->add('image', FileType::class, [
                     'label' => 'Image (jpeg ou jpg)',
                     'mapped' => false,

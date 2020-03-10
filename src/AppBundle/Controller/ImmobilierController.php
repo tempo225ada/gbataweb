@@ -45,6 +45,10 @@ class ImmobilierController extends Controller
                 catch (FileException $e) {
 
                 }
+                $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+                //$user = $this->getUser()->getId();
+                $user = $this->getUser();
+                $immobilier->setUtilisateur($user);
                 $immobilier->setImageImmo($newFilename);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($immobilier);

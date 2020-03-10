@@ -16,4 +16,12 @@ class ContactController	extends Controller {
 		return $this->render('pages/contacts.html.twig');
 
 	}
+
+	/**
+     * @Route("/admin", name="administration")
+     */
+
+	public  function admin () {
+	    return $this->render('admin.html.twig');
+    }
 }

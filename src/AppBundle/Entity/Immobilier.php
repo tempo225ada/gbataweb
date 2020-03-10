@@ -14,6 +14,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Immobilier
 {
 
+    public function __toString()
+    {
+        return $this->utilisateur;
+    }
+
     /**
      * @var int
      *
@@ -50,6 +55,13 @@ class Immobilier
      * @ORM\JoinColumn(name="typebien_id", referencedColumnName="id")
      */
     private $typebien;
+
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $utilisateur;
     
 
     /**
@@ -405,5 +417,29 @@ class Immobilier
     public function getTypebien()
     {
         return $this->typebien;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \AppBundle\Entity\User $utilisateur
+     *
+     * @return Immobilier
+     */
+    public function setUtilisateur(\AppBundle\Entity\User $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }
