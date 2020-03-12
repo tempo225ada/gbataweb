@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CommuneController	extends Controller {
 
     /**
-     * @Route("/add/commune", name="add_commune")
+     * @Route("/admin/add/commune", name="add_commune")
      */
     public function index (Request $request) {
 
@@ -35,7 +35,7 @@ class CommuneController	extends Controller {
     }
 
     /**
-     * @Route("/list/commune" , name="list_commune")
+     * @Route("/admin/list/commune" , name="list_commune")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function list () {

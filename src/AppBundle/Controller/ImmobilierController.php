@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ImmobilierController extends Controller
 {
     /**
-     * @Route("/add/immobilier", name="add_immobilier")
+     * @Route("/admin/add/immobilier", name="add_immobilier")
      */
 
     public function index ( Request $request) {
@@ -94,6 +94,22 @@ class ImmobilierController extends Controller
         return $this->render('admin/list/list_immobilier.html.twig', [
             'immobiliers' => $immobiliers
         ]);
+    }
+
+    /**
+     * @Route("/user/list/immobilier", name="user_list_immo")
+     */
+
+    public function user_list_immo() {
+        $user = $this->getUser();
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository('AppBundle:Immobilier');
+        $immobilier = $repository->findByUtilisateur($user);
+
+        return $this->render('user/list_immobilier.html.twig', [
+            'immobiliers' => $immobilier
+        ]);
+
     }
 
     /**

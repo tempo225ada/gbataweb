@@ -13,7 +13,7 @@ class BienTypeController extends Controller
 {
 
     /**
-     * @Route("/add/typebien", name="type_bien")
+     * @Route("/admin/add/typebien", name="type_bien")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -37,7 +37,7 @@ class BienTypeController extends Controller
     }
 
     /**
-     * @Route("/add/list/typebien", name="list_typebien")
+     * @Route("/admin/list/typebien", name="list_typebien")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function list() {

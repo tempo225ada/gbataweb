@@ -63,6 +63,13 @@ class DemandeImmo
      */
     private $description;
 
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $utilisateur;
+
 
     /**
      * Get id
@@ -216,5 +223,29 @@ class DemandeImmo
     public function getCommune()
     {
         return $this->commune;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \AppBundle\Entity\User $utilisateur
+     *
+     * @return DemandeImmo
+     */
+    public function setUtilisateur(\AppBundle\Entity\User $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }

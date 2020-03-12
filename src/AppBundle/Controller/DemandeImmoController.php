@@ -13,13 +13,15 @@ class DemandeImmoController extends Controller
 {
 
     /**
-     * @Route("/add/demande/immo", name="add_demande_immo")
+     * @Route("/user/add/demande/immo", name="add_demande_immo")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index (Request $request) {
 
         $demande = new DemandeImmo();
+        $user = $this->getUser();
+        $demande->setUtilisateur($user);
         $form = $this->createForm(DemandeImmoType::class, $demande);
         $form->handleRequest($request);
 
@@ -30,10 +32,26 @@ class DemandeImmoController extends Controller
             $em->flush();
         }
 
-        return $this->render('/admin/demande_immo.html.twig', [
+        return $this->render('/user/demande_immo.html.twig', [
             'form' => $form->createView()
         ]);
 
+    }
+
+    /**
+     * @Route("/user/list/demande/immo", name="user_list_demande_immo")
+     * @return string
+     */
+
+    public function list_demande_user() {
+        $user = $this->getUser();
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository(DemandeImmo::class);
+        $demande = $repository->findByUtilisateur($user);
+
+        return $this->render('user/list_demande_immo.html.twig', [
+            'demandes' => $demande
+        ]);
     }
 
     /**

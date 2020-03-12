@@ -63,6 +63,13 @@ class DemandeImmo
      */
     private $description;
 
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $utilisateur;
+
 
     /**
      * Get id
@@ -192,5 +199,29 @@ class DemandeImmo
     public function getTypebien()
     {
         return $this->typebien;
+    }
+
+    /**
+     * Set commune
+     *
+     * @param \AppBundle\Entity\Commune $commune
+     *
+     * @return DemandeImmo
+     */
+    public function setCommune(\AppBundle\Entity\Commune $commune = null)
+    {
+        $this->commune = $commune;
+
+        return $this;
+    }
+
+    /**
+     * Get commune
+     *
+     * @return \AppBundle\Entity\Commune
+     */
+    public function getCommune()
+    {
+        return $this->commune;
     }
 }
