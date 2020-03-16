@@ -18,7 +18,7 @@ class ContactController	extends Controller {
 	}
 
 	/**
-     * @Route("/admin", name="administration")
+     * @Route("/user/tableau-de-bord", name="administration")
      */
 
 	public  function admin () {

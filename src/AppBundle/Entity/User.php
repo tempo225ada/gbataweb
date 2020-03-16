@@ -46,6 +46,14 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(type="array")
+     */
+    private $roles;
+
+
     public function __toString()
     {
         return $this->username;
@@ -73,11 +81,6 @@ class User implements UserInterface, \Serializable
     public function getPassword()
     {
         return $this->password;
-    }
-
-    public function getRoles()
-    {
-        return ['ROLE_USER'];
     }
 
     public function eraseCredentials()
@@ -216,5 +219,38 @@ class User implements UserInterface, \Serializable
     public function getNumero()
     {
         return $this->numero;
+    }
+
+    /*
+     * @param array $roles
+     */
+    public function addRoles($role)
+    {
+        $this->roles[] = $role;
+    }
+    
+    /*
+     * @return array
+     */
+    public function getRoles()
+    {
+        if (empty($this->roles)) {
+            return ['ROLE_ADMIN'];
+        }
+        return $this->roles;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     *
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 }
