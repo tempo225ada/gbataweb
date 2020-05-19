@@ -46,7 +46,7 @@ security:
 
     role_hierarchy:
         ROLE_ANNONCEUR:  ROLE_USER
-        ROLE_ADMIN:  [ROLE_USER, ROLE_ANNONCEUR, ROLE_USER_CONNECT]
+        ROLE_ADMIN:  [ROLE_USER, ROLE_ANNONCEUR]
 
     access_control:
         - {path: '^/admin', roles: ROLE_ADMIN}
