@@ -63,7 +63,7 @@ class User implements UserInterface, \Serializable
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
-        $this->roles = ['ROLE_USER'];
+        $this->roles = ["ROLE_USER"];
     }
 
     public function getUsername()
@@ -234,14 +234,10 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-        $roles = $this->roles;
-
-        if (!in_array('ROLES_USER', $roles)) {
-            
-            $roles[] = 'ROLE_USER';
+        if (empty($this->roles)) {
+            return ['ROLE_USER'];
         }
-       // return $this->roles;
-       return array_unique($roles);
+        return $this->roles;
     }
 
     /**
