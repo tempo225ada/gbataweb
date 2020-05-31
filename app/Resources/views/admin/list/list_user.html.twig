@@ -1,0 +1,28 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Identifiant</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Numéro</th>
+                <th scope="col">Email</th>
+                
+            </tr>
+            </thead>
+    {% for user in users %}
+            <tbody>
+            <tr>
+                <td> {{ user.id }} </td>
+                <td> {{ user.username }} </td>
+                <td> {{ user.numero }} </td>
+                <td> {{ user.email }} </td>
+                
+            </tr>
+            </tbody>
+    {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -38,5 +38,18 @@ class UserController extends Controller {
 
     }
 
+    /**
+     * @Route("/admin/list/user", name="list_user")
+     */
+    public function list() {
+
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository('AppBundle:User');
+        $user = $repository->findAll();
+        return $this->render('admin/list/list_user.html.twig', array(
+            'users'=> $user
+        ));
+    }
+
 
 }

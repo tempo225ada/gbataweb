@@ -389,11 +389,7 @@ class SymfonyRequirements extends RequirementCollection
     {
         /* mandatory requirements follow */
 
-<<<<<<< HEAD
         $installedPhpVersion = PHP_VERSION;
-=======
-        $installedPhpVersion = phpversion();
->>>>>>> a177a5542d0e85fb11eb302885535080ea6da242
         $requiredPhpVersion = $this->getPhpRequiredVersion();
 
         $this->addRecommendation(
@@ -452,20 +448,8 @@ class SymfonyRequirements extends RequirementCollection
         }
 
         if (false !== $requiredPhpVersion && version_compare($installedPhpVersion, $requiredPhpVersion, '>=')) {
-<<<<<<< HEAD
             $this->addRequirement(
                 in_array(@date_default_timezone_get(), DateTimeZone::listIdentifiers(), true),
-=======
-            $timezones = array();
-            foreach (DateTimeZone::listAbbreviations() as $abbreviations) {
-                foreach ($abbreviations as $abbreviation) {
-                    $timezones[$abbreviation['timezone_id']] = true;
-                }
-            }
-
-            $this->addRequirement(
-                isset($timezones[@date_default_timezone_get()]),
->>>>>>> a177a5542d0e85fb11eb302885535080ea6da242
                 sprintf('Configured default timezone "%s" must be supported by your installation of PHP', @date_default_timezone_get()),
                 'Your default timezone is not supported by PHP. Check for typos in your <strong>php.ini</strong> file and have a look at the list of deprecated timezones at <a href="http://php.net/manual/en/timezones.others.php">http://php.net/manual/en/timezones.others.php</a>.'
             );
@@ -740,11 +724,7 @@ class SymfonyRequirements extends RequirementCollection
             'Install and/or enable a <strong>PHP accelerator</strong> (highly recommended).'
         );
 
-<<<<<<< HEAD
         if ('WIN' === strtoupper(substr(PHP_OS, 0, 3))) {
-=======
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
->>>>>>> a177a5542d0e85fb11eb302885535080ea6da242
             $this->addRecommendation(
                 $this->getRealpathCacheSize() >= 5 * 1024 * 1024,
                 'realpath_cache_size should be at least 5M in php.ini',
