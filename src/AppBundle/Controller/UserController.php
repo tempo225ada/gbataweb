@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 class UserController extends Controller {
 
@@ -51,5 +52,30 @@ class UserController extends Controller {
         ));
     }
 
+    /**
+     * @route("/user/{id}/edit", name="edit_user")
+     */
+
+    public function edit(User $user, Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder) {
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()){
+
+            $pass = $form['password']->getData();
+            $encoded = $encoder->encodePassword($user, $pass);
+            $user->setPassword($encoded);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('user_list_immo');
+        }
+
+        return $this->render('/user/edit_user.html.twig', [
+            'form' => $form->createView()
+        ]);
+     }
 
 }

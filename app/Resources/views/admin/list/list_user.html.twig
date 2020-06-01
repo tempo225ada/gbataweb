@@ -31,6 +31,10 @@
                     {% endfor %}
                 </td>
                 <td> {{ user.email }} </td>
+                <td> <a href="{{ path('edit_user',{
+                                id:user.id
+                        })
+                        }}">Modifier</a> </td>
                 
             </tr>
             </tbody>
