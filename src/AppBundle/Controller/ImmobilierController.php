@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class ImmobilierController extends Controller
 {
     /**
@@ -53,7 +54,7 @@ class ImmobilierController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($immobilier);
                 $em->flush();
-                $this->addFlash('succes', 'Votre offre a été enregistrée avec succèes');
+                $this->addFlash('succes', 'Votre offre a été enregistrée avec succès');
 
             }
 

@@ -6,9 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class UserType extends AbstractType
+class UserProfileType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -17,9 +16,7 @@ class UserType extends AbstractType
     {
         $builder->add('username')
                 ->add('password', PasswordType::class)
-                ->add('numero')
-                ->add('email')
-                ->add('isActive',HiddenType::class);
+                ->add('email');
     }
     
     /**

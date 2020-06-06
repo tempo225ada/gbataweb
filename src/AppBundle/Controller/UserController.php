@@ -5,11 +5,16 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 use AppBundle\Form\UserEditType;
+use AppBundle\Form\UserProfileType;
+use AppBundle\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 
 class UserController extends Controller {
 
@@ -53,13 +58,17 @@ class UserController extends Controller {
         ));
     }
 
-    /**
-     * @route("/user/{id}/edit", name="edit_user")
+      /**
+     * @route("/user/profile/edit", name="edit_profile_user")
      */
 
-    public function edit(User $user, Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder) {
+    public function editProfile(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder) : Response{
 
-        $form = $this->createForm(UserEditType::class, $user);
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->getUser();
+ 
+        $form = $this->createForm(UserProfileType::class, $user);
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()){
@@ -74,9 +83,33 @@ class UserController extends Controller {
             return $this->redirectToRoute('user_list_immo');
         }
 
+        return $this->render('/user/edit_profile_user.html.twig', [
+            'form' => $form->createView()
+        ]);
+     }
+
+    /**
+     * @route("/user/edit", name="edit_user")
+     */
+
+    public function edit(User $user, Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder) {
+
+        $form = $this->createForm(UserEditType::class, $user);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()){
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('user_list_immo');
+        }
+
         return $this->render('/user/edit_user.html.twig', [
             'form' => $form->createView()
         ]);
      }
+
+    
 
 }
