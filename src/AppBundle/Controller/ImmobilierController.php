@@ -14,8 +14,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ImmobilierController extends Controller
 {
+    //Ajout d'une offre immobiliere
     /**
-     * @Route("/admin/add/immobilier", name="add_immobilier")
+     * @Route("/annonceur/add/immobilier", name="add_immobilier")
      */
 
     public function index ( Request $request) {
@@ -54,7 +55,9 @@ class ImmobilierController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($immobilier);
                 $em->flush();
-                $this->addFlash('succes', 'Votre offre a été enregistrée avec succès');
+                $this->addFlash('success', 'Votre offre a été enregistrée avec succès');
+
+                return $this->redirectToRoute('user_list_immo');
 
             }
 

@@ -15,17 +15,18 @@
           <div class="card-body">
             <h5 class="card-title text-center">Connectez Vous</h5>
             <form class="form-signin" method="post">
-              <div class="form-label-group">
+              <div class="form-label-group my-4">
                 <input type="email" id="username" class="form-control" placeholder="Email" name="_username" value="{{ last_username }}" required autofocus>
-                <label for="username">Email address</label>
               </div>
 
-              <div class="form-label-group">
+              <div class="form-label-group my-2">
                 <input type="password" id="password" class="form-control" placeholder="Mot de passe" name="_password" required>
-                <label for="password">Mot de passe</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Se connecter</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase my-2" type="submit">Se connecter</button>
               <hr class="my-4">
+              <div>
+                <a href="/inscription"> j'ai pas de compte </a>
+              </div>
             </form>
           </div>
         </div>

@@ -1,23 +1,24 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
+    <div class="container mt-4">
+        {{ form_start(form) }}
 
-    {{ form_start(form) }}
-
-    {{ form_row(form.titre) }}
-    {{ form_row(form.type) }}
-    {{ form_row(form.bien) }}
-    {{ form_row(form.typebien) }}
-    {{ form_row(form.commune) }}
-    {{ form_row(form.piece) }}
-    {{ form_row(form.chambre) }}
-    {{ form_row(form.douche) }}
-    {{ form_row(form.prix) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.image) }}
+        {{ form_row(form.titre) }}
+        {{ form_row(form.type) }}
+        {{ form_row(form.bien) }}
+        {{ form_row(form.typebien) }}
+        {{ form_row(form.commune) }}
+        {{ form_row(form.piece) }}
+        {{ form_row(form.chambre) }}
+        {{ form_row(form.douche) }}
+        {{ form_row(form.prix) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.image) }}
 
 
-        <button type="submit">Modifier</button>
+            <button type="submit">Modifier</button>
 
-    {{ form_end(form) }}
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
