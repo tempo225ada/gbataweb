@@ -40,7 +40,6 @@ class ImmobilierType extends AbstractType
                 ->add('description')
                 ->add('utilisateur',HiddenType::class)
                 ->add('image', FileType::class, [
-                    'label' => 'Veuillez uploader des images jpeg ou jpg 2Mo maximum',
                     'mapped' => false,
                     'required' => false,
                     'constraints' => [
@@ -53,7 +52,6 @@ class ImmobilierType extends AbstractType
                     ],
                 ])
                 ->add('image2', FileType::class, [
-                    'label' => 'Veuillez uploader des images jpeg ou jpg 2Mo maximum',
                     'mapped' => false,
                     'required' => false,
                     'constraints' => [
@@ -66,7 +64,6 @@ class ImmobilierType extends AbstractType
                     ],
                 ])
                 ->add('image3', FileType::class, [
-                    'label' => 'Veuillez uploader des images jpeg ou jpg 2Mo maximum',
                     'mapped' => false,
                     'required' => false,
                     'constraints' => [
