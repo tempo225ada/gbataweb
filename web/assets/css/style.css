@@ -1,0 +1,25 @@
+.image-immo-front img {
+    width: 100%;
+    filter: brightness(85%);
+}
+
+.col-12.type-immo-front span {
+    position: relative;
+    bottom: -25px;
+    z-index: 1;
+    text-transform: capitalize;
+    padding: 4px 10px;
+    color: #fff;
+    background-color: #e0203b;
+}
+
+.col-12.titre-immo-front {
+    margin: 15px 0;
+}
+
+.col-12.titre-immo-front a {
+    color: #343845;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    padding: 0 0 0 2%;
+}

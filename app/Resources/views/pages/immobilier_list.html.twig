@@ -3,28 +3,34 @@
 
 {% block body %}
     <div class="container">
-          
+          <div class="row">
         {% for immobilier in immobiliers %}
 
-            <div class="col-sm-4">
-                <div class="col-sm-12">
+            <div class="col-4">
+                <div class="col-12 type-immo-front"> <span>{{ immobilier.type }} </span></div>
+                <div class="col-12 image-immo-front">
                     <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" />
-                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo2) }}" />
-                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo3) }}" />
+                
                 </div>
-                <div class="col-sm-12"> {{ immobilier.titre }} </div>
+                <div class="col-12 titre-immo-front"> <a href="#"> {{ immobilier.titre }} </a></div>
+                <div class="row">
+                    <div class="col-6 comm-immo-front"><i class="fas fa-map-marker-alt"></i> {{ immobilier.commune}} </div>
+                    <div class="col-6 bien-immo-front"> {{ immobilier.typebien }} </div>
+                </div> 
+                    {% if immobilier.bien == 'maison' %}
+                    <div class="row">
+                        <div class="col"><i class="fas fa-key"></i>  {{ immobilier.piece }} Pièces</div>
+                        <div class="col"> <i class="fas fa-bed"></i> {{ immobilier.chambre }} </div>
+                        <div class="col"> <i class="fas fa-bath"></i> {{ immobilier.douche }} </div>
+                    </div>
+                     {% endif %}
+                   
                 <div class="col-sm-12">
-                    <div class="col-sm-3"> {{ immobilier.type }} </div>
-                    <div class="col-sm-3"> {{ immobilier.bien }} </div>
-                    <div class="col-sm-3"> {{ immobilier.typebien }} </div>
-                    <div class="col-sm-3"> {{ immobilier.commune}} </div>
-                </div>
-                <div class="col-sm-12">
-                    {{ immobilier.description }}
+                    {{ immobilier.prix}} <span>FCFA</span>
                 </div>
             </div>
         {% endfor %}
-
+    </div>
     </div>
 
 {% endblock %}
