@@ -70,19 +70,18 @@ Website: http://www.webthemez.com/
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
+                        <a class="active-menu" href="{{ path('administration') }}"><i class="fa fa-dashboard"></i> Tableau de board</a>
                     </li>
                     
                      
                      <li>
                         <a href="#"><i class="fa fa-sitemap"></i> Listes<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
+                            {% if is_granted('ROLE_ADMIN') %} 
                             <li>
                                 <a href="{{path('admin_list_immo')}}">Offres</a>
                             </li>
-                            <li>
-                                <a href="{{path('user_list_demande_immo')}}">Mes Demandes</a>
-                            </li>
+                            
                             <li>
                                 <a href="{{path('list_commune')}}">Communes</a>
                             </li>
@@ -92,12 +91,20 @@ Website: http://www.webthemez.com/
                             <li>
                                 <a href="{{path('list_user')}}">Utilisateur</a>
                             </li>
+                            {% endif %}
+                            <li>
+                                <a href="{{path('user_list_demande_immo')}}">Mes Demandes</a>
+                            </li>
+
                             <li>
                                 <a href="{{path('user_list_immo')}}">Mes offres</a>
                             </li>
                             </ul>
                         </li>   
                             
+                         
+
+
                     <li>
                         <a href="#"><i class="fa fa-sitemap"></i> Ajouter <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -151,13 +158,8 @@ Website: http://www.webthemez.com/
 
           <div class="header"> 
                         <h1 class="page-header">
-                            Administration <small>Bienvenu ... <span>{{ app.user.username }} </span></small>
+                            Administration <small>Bienvenue... <span>{{ app.user.username }} </span></small>
                         </h1>
-                        <ol class="breadcrumb">
-                      <li><a href="#">Home</a></li>
-                      <li><a href="#">Dashboard</a></li>
-                      <li class="active">Data</li>
-                    </ol> 
                                     
         </div>
         

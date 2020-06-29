@@ -32,16 +32,36 @@ class ImmobilierController extends Controller
         if( $form->isSubmitted() && $form->isValid()) {
             // Gestion de la validation des images
             $image_immo = $form['image']->getData();
-            if($image_immo) {
+            $image_immo2 = $form['image2']->getData();
+            $image_immo3 = $form['image3']->getData();
+            if($image_immo || $image_immo2 || $image_immo3 ) {
+
                 $originalFilename = pathinfo($image_immo->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$image_immo->guessExtension();
+                
+                $originalFilename2 = pathinfo($image_immo2->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename2 = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename2);
+                $newFilename2 = $safeFilename2.'-'.uniqid().'.'.$image_immo2->guessExtension();
+
+                $originalFilename3 = pathinfo($image_immo3->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename3 = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename3);
+                $newFilename3 = $safeFilename3.'-'.uniqid().'.'.$image_immo3->guessExtension();
+                
                 //deplacer les images dans le dossier approprié upload/imageimmo
 
                 try {
                     $image_immo->move(
                         $this->getParameter('image_immo'),
                         $newFilename
+                    );
+                    $image_immo2->move(
+                        $this->getParameter('image_immo2'),
+                        $newFilename2
+                    );
+                    $image_immo3->move(
+                        $this->getParameter('image_immo3'),
+                        $newFilename3
                     );
                 }
                 catch (FileException $e) {
@@ -52,13 +72,15 @@ class ImmobilierController extends Controller
                 $user = $this->getUser();
                 $immobilier->setUtilisateur($user);
                 $immobilier->setImageImmo($newFilename);
+                $immobilier->setImageImmo2($newFilename2);
+                $immobilier->setImageImmo3($newFilename3);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($immobilier);
                 $em->flush();
                 $this->addFlash('success', 'Votre offre a été enregistrée avec succès');
 
                 return $this->redirectToRoute('user_list_immo');
-
+             
             }
 
         }
