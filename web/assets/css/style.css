@@ -1,12 +1,106 @@
+.col.offre-immo {
+    margin-top: 75px;
+}
+
+.col-12.image-immo svg {
+    font-size: 35px;
+    background-color: #000;
+    color: #fff;
+    padding: 2px 4px;
+    margin-top: -30px;
+    transition:.3s;
+}
+
+.col.comm-immo {
+    position: relative;
+    left: -6%;
+    font-size: 19px;
+    top: -18px;
+    margin-bottom: 20px;
+}
+
+.col-12.image-immo svg:hover {
+    transition: .3s;
+    cursor: pointer;
+    background-color: #e0203b;
+}
+
+.bi.bi-chevron-left.slick-arrow {
+    left: 92%;
+    position: relative;
+    top: 9px;
+}
+
+.bi.bi-chevron-right.slick-arrow {
+    position: absolute;
+    top: 19px;
+    right: 0%;
+    margin-right: 15px;
+}
+
+.row.row-offre-contenu {
+    color: #888;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.col-12.type-immo-contenu {
+    position: relative;
+    margin-bottom: -49px;
+    z-index: 2;
+}
+
+.col.loyer_immo p{
+    font-size: 24px;
+font-weight: bold;
+color: #007bff;
+text-align: right;
+margin-right: 15px;
+}
+
+.col-12.titre-immo {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -.15px;
+    line-height: 38px;
+    margin-bottom: 25px;
+}
+
+.image-immo img {
+    width: 100%;
+}
+
+.col-4.offre-immo-front {
+    background-color: transparent;
+    transition: .3s;
+    width: 30% !important;
+    max-width: 30%;
+    padding: 0 0;
+    margin: 0 1.6%;
+}
+
+.col-4.offre-immo-front:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,.25);
+    transition: .3s;
+}
+
+.col-12.image-immo-front {
+    position: relative;
+    z-index: 1;
+}
+
 .image-immo-front img {
     width: 100%;
     filter: brightness(85%);
 }
 
-.col-12.type-immo-front span {
+.col-12.type-immo-front {
     position: relative;
-    bottom: -25px;
-    z-index: 1;
+    margin-bottom: -25px;
+    z-index: 2;
+}
+
+.col-12.type-immo-front span,.col-12.type-immo-contenu span {
     text-transform: capitalize;
     padding: 4px 10px;
     color: #fff;
@@ -15,6 +109,7 @@
 
 .col-12.titre-immo-front {
     margin: 15px 0;
+    padding: 0 2%;
 }
 
 .col-12.titre-immo-front a {
@@ -22,4 +117,39 @@
     font-size: 16px;
     font-family: 'Raleway', sans-serif;
     padding: 0 0 0 2%;
+}
+
+.col-4.offre-immo-front .row {
+    color: #888;
+}
+
+.col-4.offre-immo-front .row.row-com-bien {
+    padding: 8px 2%;
+    line-height: 37px;
+    height: 90px;
+    margin-bottom: 20px;
+}
+
+.col-6.bien-immo-front, .dwc{
+    text-align: right;
+}
+
+.chbr{
+    text-align: center;
+}
+
+.col-4.offre-immo-front > div {
+    padding: 0 0;
+}
+
+.col-sm-12.loyer {
+    border-top: 1px solid #888888b3;
+    padding: 8px 0 !important;
+    font-size: 18px;
+}
+
+.col-12.autre-offre {
+    border: 1px solid rgba(0,0,0,.25);
+    margin-top: -3px;
+    padding: 0 3% !important;
 }

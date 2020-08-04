@@ -167,4 +167,28 @@ class ImmobilierController extends Controller
 
 
     }
+
+    /**
+     * @Route("/offres/immobilier/{id}", name="contenu_immobilier")
+     */
+
+    public function contenu_immobilier($id) {
+
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository('AppBundle:Immobilier');
+        $immobilier_contenu = $repository->find($id);
+
+        if(!$immobilier_contenu) {
+            // S'il y a aucun article, nous affichons une exception
+            throw $this->createNotFoundException('l\'offre n\'existe sans doute pas');
+        }
+
+        // Sinon si l'article existe
+
+        return $this->render('pages/immobilier_contenu.html.twig', [
+            'immobilier' =>  $immobilier_contenu
+        ]);
+
+    }
+
 }

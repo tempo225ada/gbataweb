@@ -6,27 +6,31 @@
           <div class="row">
         {% for immobilier in immobiliers %}
 
-            <div class="col-4">
+            <div class="col-4 offre-immo-front">
                 <div class="col-12 type-immo-front"> <span>{{ immobilier.type }} </span></div>
                 <div class="col-12 image-immo-front">
-                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" />
-                
+                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" style="height:230px" />
                 </div>
-                <div class="col-12 titre-immo-front"> <a href="#"> {{ immobilier.titre }} </a></div>
-                <div class="row">
-                    <div class="col-6 comm-immo-front"><i class="fas fa-map-marker-alt"></i> {{ immobilier.commune}} </div>
-                    <div class="col-6 bien-immo-front"> {{ immobilier.typebien }} </div>
-                </div> 
-                    {% if immobilier.bien == 'maison' %}
-                    <div class="row">
-                        <div class="col"><i class="fas fa-key"></i>  {{ immobilier.piece }} Pièces</div>
-                        <div class="col"> <i class="fas fa-bed"></i> {{ immobilier.chambre }} </div>
-                        <div class="col"> <i class="fas fa-bath"></i> {{ immobilier.douche }} </div>
+                <div class="col-12 autre-offre">
+                    <div class="col-12 titre-immo-front">{{ immobilier.titre }}</div>
+                    <div class="row row-com-bien">
+                        <div class="col-6 comm-immo-front"><i class="fas fa-map-marker-alt"></i> {{ immobilier.commune }} </div>
+                        <div class="col-6 bien-immo-front"> {{ immobilier.typebien }} </div>
+
+                        {% if immobilier.bien == 'maison' %}
+                    
+                        <div class="col pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }} Pièces</div>
+                        <div class="col chbr"> <i class="fas fa-bed"></i> {{ immobilier.chambre }} </div>
+                        <div class="col dwc"> <i class="fas fa-bath"></i> {{ immobilier.douche }} </div>
+                    
+                        {% endif %}
+                    
                     </div>
-                     {% endif %}
-                   
-                <div class="col-sm-12">
-                    {{ immobilier.prix}} <span>FCFA</span>
+                    
+                    <div class="col-sm-12 loyer">
+                        {{ immobilier.prix}} <span>FCFA</span>
+                    </div>
+                    <div class="voir-offre"><a href="{{path('contenu_immobilier', {'id': immobilier.id})}}">Voir l'offre</a></div>
                 </div>
             </div>
         {% endfor %}

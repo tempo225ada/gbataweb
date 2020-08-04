@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container">       
+            <div class="col offre-immo">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="col-12 titre-immo"> {{ immobilier.titre }} </div>
+
+                        <div class="row row-offre-contenu">
+                            <div class="col-2 bien-immo"> {{ immobilier.typebien }} </div>
+                            
+                            {% if immobilier.bien == 'maison' %}
+                        
+                                <div class="col-2 pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }} Pièces</div>
+                                <div class="col-2 chbr"> <i class="fas fa-bed"></i> {{ immobilier.chambre }} </div>
+                                <div class="col-2 dwc"> <i class="fas fa-bath"></i> {{ immobilier.douche }} </div>
+                        
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col loyer_immo">
+                       <p> {{ immobilier.prix}} <span>FCFA</span>
+                            {% if immobilier.type == 'location' %}
+                            <span>/Mois</span>
+                            {% endif %}
+                        </p>
+                        <div class="col comm-immo"><i class="fas fa-map-marker-alt"></i> {{ immobilier.commune }} </div>
+                    </div>
+                </div>
+
+                <div class="col-12 type-immo-contenu"> <span>{{ immobilier.type }} </span></div>
+
+                <div class="col-12 image-immo">
+                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" style="" />
+                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo2) }}" style="" />
+                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo3) }}" style="" />
+                </div>
+
+                <div class="col-12 description-immo"> 
+                    <h3>Descrition</h3>
+                    <p>{{ immobilier.description }} </p>
+                </div>
+
+            </div>
+    </div>
+
+{% endblock %}
