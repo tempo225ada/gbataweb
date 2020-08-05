@@ -9,7 +9,7 @@
                         <div class="col-12 titre-immo"> {{ immobilier.titre }} </div>
 
                         <div class="row row-offre-contenu">
-                            <div class="col-2 bien-immo"> {{ immobilier.typebien }} </div>
+                            <div class="col-3 bien-immo"> {{ immobilier.typebien }} </div>
                             
                             {% if immobilier.bien == 'maison' %}
                         
@@ -22,9 +22,9 @@
                     </div>
 
                     <div class="col loyer_immo">
-                       <p> {{ immobilier.prix}} <span>FCFA</span>
+                       <p> {{ immobilier.prix}} <span>fcfa</span>
                             {% if immobilier.type == 'location' %}
-                            <span>/Mois</span>
+                            <span>/mois</span>
                             {% endif %}
                         </p>
                         <div class="col comm-immo"><i class="fas fa-map-marker-alt"></i> {{ immobilier.commune }} </div>

@@ -1,4 +1,18 @@
-.col.offre-immo {
+.voir-offre svg {
+    font-size: 29px;
+    float: right;
+    position: relative;
+    margin-top: -33px;
+    left: 0;
+    transition: .3s;
+}
+
+.voir-offre svg:hover {
+    left: 3px;
+    transition: .3s;
+}
+
+.col.offre-immo, .immo-front {
     margin-top: 75px;
 }
 
@@ -9,14 +23,15 @@
     padding: 2px 4px;
     margin-top: -30px;
     transition:.3s;
+    z-index: 2;
 }
 
 .col.comm-immo {
     position: relative;
-    left: -6%;
+    text-align: right;
     font-size: 19px;
     top: -18px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .col-12.image-immo svg:hover {
@@ -28,12 +43,12 @@
 .bi.bi-chevron-left.slick-arrow {
     left: 92%;
     position: relative;
-    top: 9px;
+    top: 44px;
 }
 
 .bi.bi-chevron-right.slick-arrow {
     position: absolute;
-    top: 19px;
+    top: 54px;
     right: 0%;
     margin-right: 15px;
 }
@@ -63,7 +78,7 @@ margin-right: 15px;
     font-weight: 600;
     letter-spacing: -.15px;
     line-height: 38px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .image-immo img {
@@ -76,7 +91,7 @@ margin-right: 15px;
     width: 30% !important;
     max-width: 30%;
     padding: 0 0;
-    margin: 0 1.6%;
+    margin: 0 1.6% 40px;
 }
 
 .col-4.offre-immo-front:hover {
