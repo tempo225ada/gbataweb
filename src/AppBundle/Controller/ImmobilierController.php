@@ -149,6 +149,9 @@ class ImmobilierController extends Controller
 
         $form = $this->createForm(ImmobilierType::class, $immobilier);
 
+        $user = $this->getUser();
+        $immobilier->setUtilisateur($user);
+
         $form->handleRequest($request);
 
         if ( $form->isSubmitted() && $form->isValid()) {
@@ -158,7 +161,6 @@ class ImmobilierController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('admin_list_immo');
-
         }
 
         return $this->render('/admin/edit/edit_immobilier.html.twig', [

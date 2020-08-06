@@ -90,7 +90,7 @@ class UserController extends Controller {
      }
 
     /**
-     * @route("/user/edit", name="edit_user")
+     * @route("/user/{id}/edit", name="edit_user")
      */
 
     public function edit(User $user, Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder) {
@@ -109,7 +109,7 @@ class UserController extends Controller {
         return $this->render('/user/edit_user.html.twig', [
             'form' => $form->createView()
         ]);
-     }
+    }
 
     
 

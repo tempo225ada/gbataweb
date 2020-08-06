@@ -14,10 +14,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Immobilier
 {
 
-    public function __toString()
+  /*  public function __toString()
     {
         return $this->utilisateur;
-    }
+    }*/
 
     /**
      * @var int
