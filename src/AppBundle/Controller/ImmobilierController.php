@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\AppBundle;
 use AppBundle\Entity\Immobilier;
 use AppBundle\Form\ImmobilierType;
+use AppBundle\Form\ImmobilierEditType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -147,7 +148,7 @@ class ImmobilierController extends Controller
      */
     public function edit( Immobilier $immobilier, Request $request, EntityManagerInterface $em) {
 
-        $form = $this->createForm(ImmobilierType::class, $immobilier);
+        $form = $this->createForm(ImmobilierEditType::class, $immobilier);
 
         $user = $this->getUser();
         $immobilier->setUtilisateur($user);

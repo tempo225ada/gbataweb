@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class ImmobilierType extends AbstractType
+class ImmobilierEditType extends AbstractType
 {
     /**
      * {@inheritdoc}
