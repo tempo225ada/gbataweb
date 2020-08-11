@@ -109,6 +109,7 @@ class ImmobilierController extends Controller
 
     }
 
+
     /**
      * @Route("/admin/list/immobilier", name="admin_list_immo")
      * @return \Symfony\Component\HttpFoundation\Response
@@ -140,7 +141,7 @@ class ImmobilierController extends Controller
     }
 
     /**
-     * @Route("/admin/immobilier/{id}/edit", name="admin_immobilier_edit")
+     * @Route("/annonceur/immobilier/{id}/edit", name="admin_immobilier_edit")
      * @param Immobilier $immobilier
      * @param Request $request
      * @param EntityManagerInterface $em

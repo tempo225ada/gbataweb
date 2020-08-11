@@ -6,11 +6,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="Cet email est déjà enregistré en base de donnée.")
  * @UniqueEntity(fields="username", message="Ce nom d'utlisateur est déjà pris.")
+ * @UniqueEntity(fields="numero", message="Ce numero dee téléhone est déja utilisé.")
  */
 class User implements UserInterface, \Serializable
 {
@@ -32,12 +35,16 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=12)
+     * @ORM\Column(type="string", length=12, unique=true)
      */
     private $numero;
 
     /**
      * @ORM\Column(type="string", length=254, unique=true)
+     * @Assert\Email( 
+     * message = "Cette adresse email '{{ value }}' n\'est pas valide.", 
+     * checkMX = true 
+    * ) 
      */
     private $email;
 

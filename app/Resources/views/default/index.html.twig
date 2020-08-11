@@ -1,9 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
- 
-<div class="container immo-front">
-    <div class="row">
+
+    <div class="slide">
+        <div>
+            <p class="slide-text-top container">Gbata</p>
+            <img src="{{ asset('upload/slide/01.jpg' ) }}" />
+            <p class="slide-text container">Service d'offre immobilière</p>
+        </div>
+        <div>
+            <p class="slide-text-top container">Gbata service</p>
+            <img src="{{ asset('upload/slide/02.jpg' ) }}" />
+            <p class="slide-text container">Service facile d'ulitisation</p>
+        </div>
+    </div>
+  
+   <div class="container immo-front front">
+        <h2>Dernières offres</h2>
+        <div class="row">
+            
         {% for immobilier in immobiliers %}
 
             <div class="col-4 offre-immo-front">
@@ -40,23 +55,50 @@
                 </div>
             </div>
         {% endfor %}
+        </div>
+        <p class="voir-plus"><a href="{{path('list_immobilier')}}">Voir plus d'offre</a></p>
+   </div>
+
+   <div class="paralax">
+       <div class="container">
+            <p class="para-top">Avec une demande en logement de plus <span>450 000</span>...</p>
+            <div class="row">
+                <div class="col">
+                    <p><i class="fas fa-clock"></i></p>
+                    <p>Temps recherche assez long</p></div>
+                <div class="col">
+                    <p><i class="fas fa-money-check-alt"></i></p>
+                    <p>Coût de recherche élévé</p></div>
+                <div class="col">
+                    <p><i class="fas fa-times-circle"></i></p>
+                    <p>Choix limité</p></div>
+            </div>
+        </div>
+   </div>
+
+   <div class="phone">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="phone-top">Inscrivez vous au service SMS et recevez des offres</p>
+                    <p>Simple et facile, des informrtion d'offres où que vous soyez et sans internet</p>
+                    <div class="row">
+                        <div class="col">
+                            <span>1</span></spav><p>Envoyez au <span>+22547113202</span></p>
+                        </div>
+                        <div class="col">
+                            <span>2</span><p>GBATA<span>*</span>Votre nom</p>
+                        </div>
+                        <div class="col">
+                            <span>3</span><p>Suivez les instruction du serveur</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/y20jZzMQ0mw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-{% endblock %}
-
-{% block stylesheets %}
-<style>
-   
-
-    @media (min-width: 768px) {
-        #wrapper { width: 80%; margin: 2em auto; }
-        #icon-book { display: inline-block; }
-        #status a, #next a { display: block; }
-
-        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
-    }
-</style>
 {% endblock %}
