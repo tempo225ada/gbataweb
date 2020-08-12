@@ -1,22 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container"
+    <div class="container inscription">
         <div class="row">
-            {{ form_start(form) }}
+            <div class="col">
+                
+            </div>
+            <div class="col">
+                {{ form_start(form) }}
+                
+                <div class="form-inscription">
+                    {{ form_label(form.username, 'Nom*') }}
+                    {{ form_widget(form.username) }}
+                </div>
+                <div class="form-inscription">
+                    {{ form_label(form.username, 'Email*') }}
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="form-inscription">
+                    {{ form_label(form.username, 'Numéro mobile*') }}
+                    {{ form_widget(form.numero) }}
+                </div>
+                <div class="form-inscription">
+                    {{ form_label(form.username, 'Mot de passe*') }}
+                    {{ form_widget(form.password) }}
+                </div>
+                {{ form_row(form.isActive) }}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            {{ form_row(form.username) }}
-            {{ form_row(form.email) }}
-            {{ form_row(form.numero) }}
-            {{ form_row(form.password) }}
-            {{ form_row(form.isActive) }}
-            <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
 
-            <button type="submit">Enregistrer</button>
-
-            {{ form_end(form) }}
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 

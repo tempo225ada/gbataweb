@@ -1,3 +1,111 @@
+.inscription {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.form-inscription {
+    margin-bottom: 25px;
+}
+
+.inscription form {
+    width: 100%;
+}
+
+.paralax .col {
+    text-align: center;
+}
+
+.content-footer a {
+    color: #fff;
+}
+
+.social.col .row .col-sm-6 {
+    height: 100px;
+}
+
+.social.col i {
+    font-size: 40px;
+    top: 22px;
+    position: relative;
+}
+
+.social.col .social-text p {
+    font-size: 25px;
+    margin-bottom: 10px;
+    line-height: 25px;
+    font-weight: bold;
+    position: relative;
+    top: 25px;
+    text-align: center;
+    color: #833ab4;
+}
+
+.social-text.col-sm-6 p {
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 15px;
+    font-weight: bold;
+    position: relative;
+    top: 7px;
+    text-align: center;
+    color: #833ab4;
+}
+
+.social i {
+    color:#fff;
+}
+
+.social a {
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    transition: .3s;
+}
+
+.social a:hover {
+    background-color: #ffd119;
+    transition: .3s;
+}
+
+.col-sm-6.face {
+    background-color: #19a1da;
+    height: 40px;
+}
+
+.col-sm-6.twitt {
+    background-color: #097ceb;
+}
+
+.col-sm-6.insta {
+    background-color: #833ab4;
+}
+
+
+.phone .col-sm-6 .row > .col {
+    margin-top: 15px;
+}
+
+.phone .row .col p:nth-child(2) span {
+    color: #001022;
+}
+
+.phone .col-sm-6 .row > .col p:nth-child(1) {
+    color: #000;
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+}
+
+.phone .col-sm-6 .row > .col p:nth-child(1) span {
+    border: 3px solid;
+    border-radius: 17px;
+    padding: 0 8px;
+}
+
+.navbar-brand.logo-site img {
+    width: 25%;
+}
+
 .phone-top {
     font-weight: bold;
     font-size: 28px;
@@ -8,6 +116,7 @@
 .phone .row .col p {
     color: #26ae61;
     font-weight: bold;
+    text-align: center;
 }
 
 .phone {
@@ -78,7 +187,7 @@
     font-size: 42px;
     font-weight: bold;
     text-transform: uppercase;
-    padding-right:35%;
+    padding-right:20%;
     padding-top: 75px;
 }
 
@@ -136,31 +245,53 @@
 }
 
 .base .navbar {
-    padding: 1.5rem 1rem;
+    padding: .1rem 1rem;
 }
 
 .base .navbar-nav li .nav-link {
     font-weight: 500;
     font-size: 16px;
     padding: 10px 20px;
-        padding-right: 20px;
-        padding-left: 20px;
     color: #001935;
 }
 
 .tel {
     position: relative;
+    font-size: 13px;
+    top: 2px;
+}
+
+.mail {
+    margin-left: 2%;
+    position: relative;
+    top: 3px;
     font-size: 14px;
 }
 
 .top {
     background: #001022;
-    color:#fff;
-    padding: 5px 2rem;
+    color: #fff;
+    height: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.top a svg {
+    color: #fff;
+    font-size: 23px;
+    position: relative;
+    top: -8px;
+    transition: .3s;
 }
 
 .top a{
     color:#fff;
+    transition: .3s;
+}
+
+.top a svg:hover, .top a:hover {
+    color: #ffd119;
+    transition: .3s;
 }
 
 .voir-offre svg {
