@@ -63,7 +63,6 @@ class Immobilier
      */
     private $utilisateur;
     
-
     /**
      *
      * @ORM\ManyToOne(targetEntity="Commune")

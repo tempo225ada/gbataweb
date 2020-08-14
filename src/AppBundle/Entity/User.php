@@ -227,14 +227,6 @@ class User implements UserInterface, \Serializable
     {
         return $this->numero;
     }
-
-   
-     // @param array $roles
-     
-    //public function addRoles($role)
-    //{
-      //  $this->roles[] = $role;
-   // }
     
     /*
      * @return array

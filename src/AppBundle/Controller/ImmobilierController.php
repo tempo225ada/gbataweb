@@ -148,10 +148,16 @@ class ImmobilierController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function edit( Immobilier $immobilier, Request $request, EntityManagerInterface $em) {
+       
+        if($immobilier->getUtilisateur() !== $this->getUser()){
+            $this->addFlash('danger', 'Vous n\'avez pas les accès pour modifier cette annonce, cette offre ne vous appartient peut être pas');
+            return $this->redirectToRoute('user_list_immo');
+        }
 
         $form = $this->createForm(ImmobilierEditType::class, $immobilier);
 
         $user = $this->getUser();
+
         $immobilier->setUtilisateur($user);
 
         $form->handleRequest($request);
