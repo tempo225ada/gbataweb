@@ -2,6 +2,7 @@
 
 {% block body %}
 
+
     <div class="container mt-4">
         <table class="table">
             <thead>
@@ -14,7 +15,7 @@
                 <th scope="col">Commune</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Pièces</th>
-                <th scope="col">Action</th>
+                <th scope="col">Actions</th>
             </tr>
             </thead>
             {% for immobilier in immobiliers %}
@@ -28,16 +29,44 @@
                     <td> {{ immobilier.commune}} </td>
                     <td> {{ immobilier.prix}} </td>
                     <td> {{ immobilier.piece }} </td>
-                    <td> <a href="{{ path('admin_immobilier_edit',{
-                                id:immobilier.id
-                        })
-                        }}">Modifier</a> </td>
+                    <td> <a href="{{ path('admin_immobilier_edit',{id:immobilier.id})}}" class="btn btn-primary" >Modifier</a> 
+
+                    <a href="javascript:void(0)" onclick="if(confirm('Voulez vous vraiment supprimer cette offre !')){window.location='{{ path('admin_immobilier_delete',{id:immobilier.id})}}';}" class="btn btn-danger">Supprimer</a>
+
+
+                     </td>
+                   
 
                 </tr>
                 </tbody>
 
         {% endfor %}
         </table>
-    </div>
+
+      {#  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Voulez vous réellement supprimer cette offre
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ path('admin_immobilier_delete',{id:immobilier.id})}}" class="btn btn-danger">Supprimer</a>
+                    <button type="button" class="btn btn-primary">Supprimer</button>
+                </div>
+            </div>
+        </div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Supprimer</button>
+
+    </div> #}
 
 {% endblock %}
+
+
+ 

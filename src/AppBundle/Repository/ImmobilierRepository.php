@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class ImmobilierRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllImmobilier(){
+        return $this->getEntitymanager()
+            ->createQuery(
+                'SELECT i FROM AppBundle:Immobilier i ORDER by i.datecreation DESC'
+            )
+            ->getResult();
+    }
 }

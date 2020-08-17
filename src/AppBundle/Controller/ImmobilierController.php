@@ -75,6 +75,8 @@ class ImmobilierController extends Controller
                 $immobilier->setImageImmo($newFilename);
                 $immobilier->setImageImmo2($newFilename2);
                 $immobilier->setImageImmo3($newFilename3);
+                $immobilier->setDatecreation(new \DateTime());
+                $immobilier->setDatemodifcation(new \DateTime());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($immobilier);
                 $em->flush();
@@ -101,7 +103,7 @@ class ImmobilierController extends Controller
 
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
-        $immobiliers = $repository->findAll();
+        $immobiliers = $repository->findAllImmobilier();
 
         return $this->render('pages/immobilier_list.html.twig', [
             'immobiliers' => $immobiliers
@@ -118,14 +120,14 @@ class ImmobilierController extends Controller
     public function liste_immobilier_admin() {
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
-        $immobiliers = $repository->findAll();
+        $immobiliers = $repository->findAllImmobilier();
         return $this->render('admin/list/list_immobilier.html.twig', [
             'immobiliers' => $immobiliers
         ]);
     }
 
     /**
-     * @Route("/user/list/immobilier", name="user_list_immo")
+     * @Route("/annonceur/list/immobilier", name="user_list_immo")
      */
 
     public function user_list_immo() {
@@ -155,28 +157,34 @@ class ImmobilierController extends Controller
         }
 
         $form = $this->createForm(ImmobilierEditType::class, $immobilier);
-
         $user = $this->getUser();
-
         $immobilier->setUtilisateur($user);
-
         $form->handleRequest($request);
 
         if ( $form->isSubmitted() && $form->isValid()) {
-
             $immobilier = $form->getData();
             $em->persist($immobilier);
             $em->flush();
-
-            return $this->redirectToRoute('admin_list_immo');
+            return $this->redirectToRoute('user_list_immo');
         }
 
         return $this->render('/admin/edit/edit_immobilier.html.twig', [
             'form' => $form->createView()
         ]);
-
-
     }
+
+    /**
+     * @Route("/annonceur/immobilier/{id}/delete", name="admin_immobilier_delete")
+     * @param Immobilier $immobilier
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+     public function delete(Immobilier $immobilier, Request $request, EntityManagerInterface $em) {
+         $em->remove($immobilier);
+         $em->flush();
+         return $this->redirectToRoute('user_list_immo');
+     }
 
     /**
      * @Route("/offres/immobilier/{id}", name="contenu_immobilier")

@@ -107,7 +107,17 @@ class Immobilier
      */
     private $description;
 
+    /**
+    * 
+    * @ORM\Column(name="datecreation",type="datetime")
+    */
     private $datecreation;
+
+    /**
+    * 
+    * @ORM\Column(name="datemodif",type="datetime")
+    */
+    private $datemodifcation;
 
     /**
      * @var string
@@ -495,5 +505,53 @@ class Immobilier
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * Set datecreation
+     *
+     * @param \DateTime $datecreation
+     *
+     * @return Immobilier
+     */
+    public function setDatecreation($datecreation)
+    {
+        $this->datecreation = $datecreation;
+
+        return $this;
+    }
+
+    /**
+     * Get datecreation
+     *
+     * @return \DateTime
+     */
+    public function getDatecreation()
+    {
+        return $this->datecreation;
+    }
+
+    /**
+     * Set datemodifcation
+     *
+     * @param \DateTime $datemodifcation
+     *
+     * @return Immobilier
+     */
+    public function setDatemodifcation($datemodifcation)
+    {
+        $this->datemodifcation = $datemodifcation;
+
+        return $this;
+    }
+
+    /**
+     * Get datemodifcation
+     *
+     * @return \DateTime
+     */
+    public function getDatemodifcation()
+    {
+        return $this->datemodifcation;
     }
 }

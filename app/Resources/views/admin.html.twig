@@ -75,29 +75,32 @@ Website: http://www.webthemez.com/
                         <a href="#"><i class="fa fa-sitemap"></i> Listes<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             {% if is_granted('ROLE_ADMIN') %} 
-                            <li>
-                                <a href="{{path('admin_list_immo')}}">Offres</a>
-                            </li>
-                            
-                            <li>
-                                <a href="{{path('list_commune')}}">Communes</a>
-                            </li>
-                            <li>
-                                <a href="{{path('list_typebien')}}">Type bien</a>
-                            </li>
-                            <li>
-                                <a href="{{path('list_user')}}">Utilisateur</a>
-                            </li>
-                            {% endif %}
-                            <li>
-                                <a href="{{path('user_list_demande_immo')}}">Mes Demandes</a>
-                            </li>
+                                <li>
+                                    <a href="{{path('admin_list_immo')}}">Offres</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="{{path('list_commune')}}">Communes</a>
+                                </li>
+                                <li>
+                                    <a href="{{path('list_typebien')}}">Type bien</a>
+                                </li>
+                                <li>
+                                    <a href="{{path('list_user')}}">Utilisateur</a>
+                                </li>
+                                {% endif %}
+                                
+                                <li>
+                                    <a href="{{path('user_list_demande_immo')}}">Mes Demandes</a>
+                                </li>
 
-                            <li>
-                                <a href="{{path('user_list_immo')}}">Mes offres</a>
-                            </li>
-                            </ul>
-                        </li>   
+                                {% if is_granted('ROLE_ANNONCEUR') %} 
+                                <li>
+                                    <a href="{{path('user_list_immo')}}">Mes offres</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>   
                             
                          
 
@@ -156,7 +159,7 @@ Website: http://www.webthemez.com/
           <div class="header"> 
           
             <h1 class="page-header">
-                Administration <small>Bienvenue... <span>{{ app.user.username }} </span></small>
+                Administration <small>Bienvenue... <span style="text-transform:capitalize">{{ app.user.username }} </span></small>
             </h1>
             
             {% for message in app.flashes('success') %}

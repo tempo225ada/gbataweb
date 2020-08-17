@@ -1,3 +1,8 @@
+.bi.bi-person-circle {
+    position: relative;
+    top: -14px;
+}
+
 #appbundle_user_numero + p {
     color: #0006;
 }
@@ -81,8 +86,8 @@
     color: #833ab4;
 }
 
-.social-text.col-sm-6 p {
-    font-size: 15px;
+.social-text.col-sm-5 p {
+    font-size: 12px;
     margin-bottom: 10px;
     line-height: 15px;
     font-weight: bold;

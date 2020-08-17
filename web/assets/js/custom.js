@@ -3,6 +3,20 @@
     License: Commons Attribution 3.0
     http://creativecommons.org/licenses/by/3.0/
 ---------------------------------------------------------  */
+(function ($) {
+    $('#delete_form').on('submit', function(e) {
+        e.preventDefault();
+        confirmDelete();
+    });
+    
+    function confirmDelete() {
+    var result = confirm('Are you sure you want to delete this question?');
+    if (result === true) {
+        $('#delete_form').submit();
+        }
+    }
+    }(jQuery));
+
 
 (function ($) {
     "use strict";
@@ -200,3 +214,6 @@
     });
 
 }(jQuery));
+
+
+
