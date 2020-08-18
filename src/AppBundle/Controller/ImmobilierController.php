@@ -99,14 +99,19 @@ class ImmobilierController extends Controller
      * @Route("/offre/immobilier", name="list_immobilier")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function liste() {
+    public function liste( Request $request) {
 
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
         $immobiliers = $repository->findAllImmobilier();
 
+        $reservations  = $this->get('knp_paginator')->paginate(
+            $immobiliers,
+            $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+              9/*nbre d'éléments par page*/  );
+
         return $this->render('pages/immobilier_list.html.twig', [
-            'immobiliers' => $immobiliers
+            'immobiliers' => $reservations
         ]);
 
     }

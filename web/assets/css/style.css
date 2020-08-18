@@ -1,3 +1,7 @@
+.pagination.justify-content-center {
+    margin-bottom: 50px;
+}
+
 .bi.bi-person-circle {
     position: relative;
     top: -14px;
