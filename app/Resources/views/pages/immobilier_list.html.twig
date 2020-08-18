@@ -3,55 +3,56 @@
 
 {% block body %}
     <div class="container immo-front">
-        <div class="row">
 
-            {% for immobilier in immobiliers %}
+            <div class="row">
 
-            <div class="col-4 offre-immo-front">
-                <div class="col-12 type-immo-front"> 
-                    {% if immobilier.type == 'location' %}
-                        <span>{{ immobilier.type }} </span>
-                    {% else %}
-                        <span class="vente">{{ immobilier.type }} </span>
-                    {% endif %}                       
-                </div>
+                {% for immobilier in immobiliers %}
 
-                <div class="col-12 image-immo-front">
-                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" style="height:230px" />
-                </div>
-
-                <div class="col-12 autre-offre">
-                    <div class="col-12 titre-immo-front">{{ immobilier.titre }}</div>
-
-                    <div class="row row-com-bien">
-                        <div class="col-6 comm-immo-front"><i class="fas fa-map-marker-alt"></i> {{ immobilier.commune }} </div>
-                        <div class="col-6 bien-immo-front"> {{ immobilier.typebien }} </div>
-
-                        {% if immobilier.bien == 'maison' %}
-                    
-                        <div class="col pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }} Pièces</div>
-                        <div class="col chbr"> <i class="fas fa-bed"></i> {{ immobilier.chambre }} </div>
-                        <div class="col dwc"> <i class="fas fa-bath"></i> {{ immobilier.douche }} </div>
-                    
-                        {% endif %}                    
-                    </div>
-
-                    <div class="col-sm-12 loyer">
-                        <span class="prix">{{ immobilier.prix }} </span>  <span>fcfa</span>
+                <div class="col-4 offre-immo-front">
+                    <div class="col-12 type-immo-front"> 
                         {% if immobilier.type == 'location' %}
-                            <span class="mois">/mois</span>
-                        {% endif %}
+                            <span>{{ immobilier.type }} </span>
+                        {% else %}
+                            <span class="vente">{{ immobilier.type }} </span>
+                        {% endif %}                       
                     </div>
 
-                    <div class="voir-offre"><a href="{{path('contenu_immobilier', {'id': immobilier.id})}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 8l-2.647-2.646a.5.5 0 0 1 0-.708z"/>
-                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
-                      </svg></a>
+                    <div class="col-12 image-immo-front">
+                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" style="height:230px" />
                     </div>
+
+                    <div class="col-12 autre-offre">
+                        <div class="col-12 titre-immo-front">{{ immobilier.titre }}</div>
+
+                        <div class="row row-com-bien">
+                            <div class="col-6 comm-immo-front"><i class="fas fa-map-marker-alt"></i> {{ immobilier.commune }} </div>
+                            <div class="col-6 bien-immo-front"> {{ immobilier.typebien }} </div>
+
+                            {% if immobilier.bien == 'maison' %}
+                        
+                            <div class="col pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }} Pièces</div>
+                            <div class="col chbr"> <i class="fas fa-bed"></i> {{ immobilier.chambre }} </div>
+                            <div class="col dwc"> <i class="fas fa-bath"></i> {{ immobilier.douche }} </div>
+                        
+                            {% endif %}                    
+                        </div>
+
+                        <div class="col-sm-12 loyer">
+                            <span class="prix">{{ immobilier.prix }} </span>  <span>fcfa</span>
+                            {% if immobilier.type == 'location' %}
+                                <span class="mois">/mois</span>
+                            {% endif %}
+                        </div>
+
+                        <div class="voir-offre"><a href="{{path('contenu_immobilier', {'id': immobilier.id})}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 8l-2.647-2.646a.5.5 0 0 1 0-.708z"/>
+                            <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
+                        </svg></a>
+                        </div>
+                    </div>
+                </div>      
+                    {% endfor %}
                 </div>
-            </div>      
-        {% endfor %}
-        </div>
     </div>
 
         <nav aria-label="Page navigation example">{{ knp_pagination_render(immobiliers) }}</nav> 

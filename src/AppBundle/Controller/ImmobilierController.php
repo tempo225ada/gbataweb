@@ -7,10 +7,11 @@ use AppBundle\Entity\Immobilier;
 use AppBundle\Form\ImmobilierType;
 use AppBundle\Form\ImmobilierEditType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\Request;
 
 
 class ImmobilierController extends Controller
@@ -178,6 +179,7 @@ class ImmobilierController extends Controller
         ]);
     }
 
+
     /**
      * @Route("/annonceur/immobilier/{id}/delete", name="admin_immobilier_delete")
      * @param Immobilier $immobilier
@@ -186,6 +188,22 @@ class ImmobilierController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
      public function delete(Immobilier $immobilier, Request $request, EntityManagerInterface $em) {
+         $file1 = $immobilier->getImageImmo();
+         $file2 = $immobilier->getImageImmo2();
+         $file3 = $immobilier->getImageImmo3();
+         
+         $projectDir = $this->get('kernel')->getProjectDir();
+         $filesystem = new Filesystem();
+ 
+         $path=$projectDir.'/web/upload/image_immo/'.$file1;
+         $filesystem->remove($path);
+     
+         $path2=$projectDir.'/web/upload/image_immo/'.$file2;
+         $filesystem->remove($path2);
+
+         $path3=$projectDir.'/web/upload/image_immo/'.$file3;
+         $filesystem->remove($path3);
+
          $em->remove($immobilier);
          $em->flush();
          return $this->redirectToRoute('user_list_immo');
