@@ -11,9 +11,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
- * @UniqueEntity(fields="email", message="Cet email est déjà enregistré en base de donnée.")
  * @UniqueEntity(fields="username", message="Ce nom d'utlisateur est déjà pris.")
- * @UniqueEntity(fields="numero", message="Ce numero dee téléhone est déja utilisé.")
+ * @UniqueEntity(fields="email", message="Cet email est déjà utilisée.")
+ * @UniqueEntity(fields="numero", message="Ce numero de téléphone est déja utilisé.")
  */
 class User implements UserInterface, \Serializable
 {
@@ -30,19 +30,29 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
+     * @Assert\Length(
+     *      min = 8,
+     *      maxMessage = "Votre mot de passe est trop court, il faut au moins 8 caractères"
+     * )
      * @ORM\Column(type="string", length=64)
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=12, unique=true)
+     * @ORM\Column(type="string", length=8, unique=true)
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 8,
+     *      minMessage = "Votre numéro de téléphone est trop court, il doît être du type: xxxxxxxx",
+     *      maxMessage = "Votre numéro de téléphone est trop court, il doît être du type: xxxxxxxx"
+     * )
      */
     private $numero;
 
     /**
      * @ORM\Column(type="string", length=254, unique=true)
      * @Assert\Email( 
-     * message = "Cette adresse email '{{ value }}' n\'est pas valide.", 
+     * message = "Cette adresse email {{ value }} n'est pas valide.", 
      * checkMX = true 
     * ) 
      */
