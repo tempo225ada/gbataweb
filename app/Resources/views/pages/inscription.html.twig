@@ -13,22 +13,25 @@
             </div>
             <div class="col">
                 {{ form_start(form) }}
-                
+             
                 <div class="form-inscription">
                     {{ form_label(form.username, 'Nom*') }}
                     {{ form_widget(form.username) }}
                 </div>
                 <div class="form-inscription">
-                    {{ form_label(form.username, 'Email*') }}
+                    {{ form_label(form.email, 'Email*') }}
                     {{ form_widget(form.email) }}
                 </div>
                 <div class="form-inscription">
-                    {{ form_label(form.username, 'Numéro mobile*') }}
-                    {{ form_widget(form.numero) }}
+                    {{ form_label(form.numero, 'Numéro mobile*') }}
+                    <div class="row">
+                        <div class="col-1 indicatif">+225</div>
+                        <div class="col-12 ins-numero">{{ form_widget(form.numero) }}</div>
+                    </div>
                     <p> Renseigner votre numéro sans indicatif. Ex: 45452861.</p>
                 </div>
                 <div class="form-inscription">
-                    {{ form_label(form.username, 'Mot de passe*') }}
+                    {{ form_label(form.password, 'Mot de passe*') }}
                     {{ form_widget(form.password) }}
                 </div>
                 {{ form_row(form.isActive) }}
