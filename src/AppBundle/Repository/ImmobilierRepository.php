@@ -42,7 +42,7 @@ class ImmobilierRepository extends \Doctrine\ORM\EntityRepository
         }
 
         if($search->getPrix()){
-            $query->andWhere('u.prix = :prix')
+            $query->andWhere('u.prix <= :prix')
                   ->setParameter('prix', $search->getPrix());
         }
 
