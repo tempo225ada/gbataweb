@@ -10,6 +10,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 class ImmobilierType extends AbstractType
 {
@@ -32,7 +34,14 @@ class ImmobilierType extends AbstractType
                     ]
                 ])
                 ->add('typebien')
-                ->add('commune')
+                ->add('commune',EntityType::class, [
+                    'class' => 'AppBundle:commune',
+                    'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                              ->orderBy('u.nom', 'ASC');
+                },
+                'choice_label' => 'nom',
+            ])
                 ->add('piece')
                 ->add('chambre')
                 ->add('douche')

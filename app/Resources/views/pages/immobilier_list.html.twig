@@ -4,7 +4,45 @@
 {% block body %}
     <div class="container immo-front">
 
-            <div class="row">
+         {{form_start(form)}}
+            <div class="row search">
+                <div class="col-4">
+                    {{ form_label(form.type, 'Type') }}
+                    {{ form_widget(form.type) }}
+                </div>
+                <div class="col-4">
+                    {{ form_label(form.bien, 'Bien') }}
+                    {{ form_widget(form.bien) }}
+                </div>
+                <div class="col-4">
+                    {{ form_label(form.typebien, 'Type Bien') }}
+                    {{ form_widget(form.typebien) }}
+                </div>
+                <div class="col-4">
+                    {{ form_label(form.commune, 'Commune') }}
+                    {{ form_widget(form.commune) }}
+                </div>
+                <div class="col-4">
+                    {{ form_label(form.piece, 'Pièce') }}
+                    {{ form_widget(form.piece) }}
+                </div>
+                <div class="col-4">
+                    {{ form_label(form.prix, 'Prix') }}
+                    {{ form_widget(form.prix) }}
+                </div>
+             </div>
+             <button type="submit" class="btn btn-primary">Recherche</button>
+            
+         {{form_end(form)}}
+
+       
+
+         <div class="row">
+            {% if immobiliers | length ==  0 %}
+
+                <div class="rien-offre col"> Il n'y pas d'offre disponible </div>
+
+            {% else %}
 
                 {% for immobilier in immobiliers %}
 
@@ -52,7 +90,9 @@
                     </div>
                 </div>      
                     {% endfor %}
-                </div>
+                
+                {% endif %}
+            </div>
     </div>
 
         <nav aria-label="Page navigation example">{{ knp_pagination_render(immobiliers) }}</nav> 

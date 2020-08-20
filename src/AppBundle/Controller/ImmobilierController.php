@@ -5,8 +5,11 @@ namespace AppBundle\Controller;
 use AppBundle\AppBundle;
 use AppBundle\Entity\Immobilier;
 use AppBundle\Form\ImmobilierType;
+use AppBundle\Entity\ImmobilierSearch;
 use AppBundle\Form\ImmobilierEditType;
+use AppBundle\Form\ImmobilierSearchType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -100,19 +103,25 @@ class ImmobilierController extends Controller
      * @Route("/offre/immobilier", name="list_immobilier")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function liste( Request $request) {
+    public function liste( Request $request, PaginatorInterface $paginator) {
+
+        $search = new ImmobilierSearch();
+        $form = $this->createForm(ImmobilierSearchType::class, $search);
+        $form->handleRequest($request);
 
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
-        $immobiliers = $repository->findAllImmobilier();
+        $immobiliers = $repository->findAllImmobilier($search);
+        
 
-        $reservations  = $this->get('knp_paginator')->paginate(
-            $immobiliers,
-            $request->query->get('page', 1)/*le numéro de la page à afficher*/,
-              9/*nbre d'éléments par page*/  );
+        $reservations = $paginator->paginate($immobiliers,
+                             $request->query->getInt('page', 1), 
+                             9 
+                            );
 
         return $this->render('pages/immobilier_list.html.twig', [
-            'immobiliers' => $reservations
+            'immobiliers' => $reservations,
+            'form' => $form->createView()
         ]);
 
     }
