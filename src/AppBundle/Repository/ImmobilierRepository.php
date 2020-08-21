@@ -45,7 +45,7 @@ class ImmobilierRepository extends \Doctrine\ORM\EntityRepository
             $query->andWhere('u.prix <= :prix')
                   ->setParameter('prix', $search->getPrix());
         }
-
+        $query->addOrderBy('u.datecreation', 'DESC');
         return $query->getQuery();
     }
 }

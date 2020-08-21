@@ -1,3 +1,12 @@
+.offre-date.col {
+    color: #9a9a9a;
+    text-align: right;
+}
+
+.navbar-nav.connexion {
+    float: left;
+}
+
 .col-12.ins-numero input {
     padding-left: 10%;
 }
@@ -95,7 +104,7 @@
     width: 100%;
 }
 
-.paralax .col {
+.paralax .col-sm-4 {
     text-align: center;
 }
 
@@ -103,17 +112,23 @@
     color: #fff;
 }
 
-.social.col .row .col-sm-6 {
+.social .row .col-sm-6 {
     height: 100px;
 }
 
-.social.col i {
+.social i {
     font-size: 40px;
     top: 22px;
     position: relative;
 }
 
-.social.col .social-text p {
+.social.col-sm-2 i {
+    font-size: 18px;
+    top: 2px;
+}
+
+
+.social .social-text p {
     font-size: 25px;
     margin-bottom: 10px;
     line-height: 25px;
@@ -165,22 +180,22 @@
 }
 
 
-.phone .col-sm-6 .row > .col-4 {
+.phone .col-sm-6 .row > .col-sm-4 {
     margin-top: 15px;
 }
 
-.phone .row .col-4 p:nth-child(2) span {
+.phone .row .col-sm-4 p:nth-child(2) span {
     color: #001022;
 }
 
-.phone .col-sm-6 .row > .col-4 p:nth-child(1) {
+.phone .col-sm-6 .row > .col-sm-4 p:nth-child(1) {
     color: #097ceb;
     font-size: 24px;
     text-align: center;
     position: relative;
 }
 
-.phone .col-sm-6 .row > .col-4 p:nth-child(1) span {
+.phone .col-sm-6 .row > .col-sm-4 p:nth-child(1) span {
     border: 3px solid;
     border-radius: 17px;
     padding: 0 8px;
@@ -223,6 +238,7 @@
 
 .voir-plus {
     text-align: right;
+    margin-top: 15px;
 }
 
 .voir-plus a{
@@ -253,7 +269,7 @@
     display: block;
     background: linear-gradient(to top, #0a88f0b3 55%, #0a88f033 100%);
     position: relative;
-    top: -352px;
+    top: -346px;
 }
 
 .paralax span {
@@ -379,6 +395,7 @@
     height: 30px;
     position: relative;
     z-index: 1;
+    padding: 0 2.3%;
 }
 
 .top a svg {
@@ -494,7 +511,7 @@ margin-right: 15px;
     width: 100%;
 }
 
-.col-4.offre-immo-front {
+.col-sm-4.offre-immo-front {
     background-color: transparent;
     transition: .3s;
     width: 30% !important;
@@ -503,7 +520,12 @@ margin-right: 15px;
     margin: 0 1.6% 40px;
 }
 
-.col-4.offre-immo-front:hover {
+.row.row-com-bien .col {
+    position: relative;
+    top: 10px;
+}
+
+.col-sm-4.offre-immo-front:hover {
     box-shadow: 0 8px 16px rgba(0,0,0,.25);
     transition: .3s;
 }
@@ -511,6 +533,7 @@ margin-right: 15px;
 .col-12.image-immo-front {
     position: relative;
     z-index: 1;
+    padding: 0 0;
 }
 
 .image-immo-front img {
@@ -522,6 +545,7 @@ margin-right: 15px;
     position: relative;
     margin-bottom: -26px;
     z-index: 2;
+    padding: 0 0;
 }
 
 .col-12.type-immo-front span,.col-12.type-immo-contenu span {
@@ -551,7 +575,7 @@ margin-right: 15px;
     color: #888;
 }
 
-.col-4.offre-immo-front .row.row-com-bien {
+.row-com-bien{
     padding: 8px 2%;
     line-height: 37px;
     height: 90px;
@@ -799,4 +823,11 @@ line-height: 71px;
 
   body a:hover {
       text-decoration: none;
+  }
+
+  @media (max-width:600px){
+
+    .col-sm-4.col-xs-12.offre-immo-front {
+        margin-bottom: 40px;
+    }
   }

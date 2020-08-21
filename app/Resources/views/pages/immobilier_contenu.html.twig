@@ -2,9 +2,17 @@
 
 
 {% block body %}
-    <div class="container">       
+    <div class="container">   
+              
             <div class="col offre-immo">
+
+                {% if is_granted('ROLE_ANNONCEUR') %} 
+                    <div class="admin-action col"><a href="{{ path('admin_immobilier_edit',{id:immobilier.id})}}" class="btn btn-primary" >Modifier</a> </div>
+                {% endif %} 
+
+                <div class="offre-date col">Publiée le {{ immobilier.datecreation|date("d/m/Y") }}</div>
                 <div class="row">
+                    
                     <div class="col-9">
                         <div class="col-12 titre-immo"> {{ immobilier.titre }} </div>
 

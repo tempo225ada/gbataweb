@@ -46,7 +46,7 @@
 
                 {% for immobilier in immobiliers %}
 
-                <div class="col-4 offre-immo-front">
+                <div class="col-sm-4 col-xs-12 offre-immo-front">
                     <div class="col-12 type-immo-front"> 
                         {% if immobilier.type == 'location' %}
                             <span>{{ immobilier.type }} </span>
@@ -68,7 +68,7 @@
 
                             {% if immobilier.bien == 'maison' %}
                         
-                            <div class="col pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }} Pièces</div>
+                            <div class="col pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }}</div>
                             <div class="col chbr"> <i class="fas fa-bed"></i> {{ immobilier.chambre }} </div>
                             <div class="col dwc"> <i class="fas fa-bath"></i> {{ immobilier.douche }} </div>
                         

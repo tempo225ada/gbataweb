@@ -21,7 +21,7 @@
             
         {% for immobilier in immobiliers %}
 
-            <div class="col-4 offre-immo-front">
+            <div class="col-sm-4 col-xs-12 offre-immo-front">
                 <div class="col-12 type-immo-front"> <span>{{ immobilier.type }} </span></div>
                 <div class="col-12 image-immo-front">
                     <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" style="height:230px" />
@@ -34,7 +34,7 @@
 
                         {% if immobilier.bien == 'maison' %}
                     
-                        <div class="col pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }} Pièces</div>
+                        <div class="col pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }}</div>
                         <div class="col chbr"> <i class="fas fa-bed"></i> {{ immobilier.chambre }} </div>
                         <div class="col dwc"> <i class="fas fa-bath"></i> {{ immobilier.douche }} </div>
                     
@@ -63,13 +63,13 @@
        <div class="container">
             <p class="para-top">Avec une demande en logement de plus <span>450 000</span>...</p>
             <div class="row">
-                <div class="col">
+                <div class="col-sm-4">
                     <p><i class="fas fa-clock"></i></p>
                     <p>Temps recherche assez long</p></div>
-                <div class="col">
+                <div class="col-sm-4">
                     <p><i class="fas fa-money-check-alt"></i></p>
                     <p>Coût de recherche élévé</p></div>
-                <div class="col">
+                <div class="col-sm-4">
                     <p><i class="fas fa-times-circle"></i></p>
                     <p>Choix limité</p></div>
             </div>
@@ -79,17 +79,17 @@
    <div class="phone">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6 col-xs-12">
                     <p class="phone-top">Inscrivez vous au service SMS et recevez des offres</p>
                     <p>Simple et facile, des informrtion d'offres où que vous soyez et sans internet</p>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-sm-4 col-xs-12">
                             <p><span>1</span></p><p>Inscrivez vous, c'est rapide</p>
                         </div>
-                        <div class="col-4">
+                        <div class="col-sm-4 col-xs-12">
                             <p><span>2</span></p><p>Postez votre demande</p>
                         </div>
-                        <div class="col-4">
+                        <div class="col-sm-4 col-xs-12">
                             <p><span>3</span></p><p>Recevez des offres par sms</p>
                         </div>
                         <p class="voir-plus col"><a href="{{path('sign_up')}}">Incrivez vous <i class="fas fa-long-arrow-alt-right"></i></a></p>

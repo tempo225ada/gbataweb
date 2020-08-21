@@ -25,7 +25,7 @@ class DefaultController extends Controller
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
         //$immobiliers = $repository->findAll();
-        $immobiliers = $repository->findBy(array(),array(),3);
+        $immobiliers = $repository->findBy(array(),array('datecreation' => 'DESC'),3);
 
         return $this->render('default/index.html.twig', [
             'immobiliers' => $immobiliers

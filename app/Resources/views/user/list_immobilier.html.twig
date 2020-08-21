@@ -27,7 +27,7 @@
                 <tbody>
                 <tr>
                     <td> {{ immobilier.id }} </td>
-                    <td> {{ immobilier.titre }} </td>
+                    <td><a href="{{path('contenu_immobilier', {'id': immobilier.id})}}" target="_blank"> {{ immobilier.titre }} </a></td>
                     <td> {{ immobilier.type }} </td>
                     <td> {{ immobilier.bien }} </td>
                     <td> {{ immobilier.typebien }} </td>

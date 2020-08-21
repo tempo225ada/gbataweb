@@ -7,9 +7,10 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    image_immo: '%kernel.project_dir%/web/upload/image_immo'
-    image_immo2: '%kernel.project_dir%/web/upload/image_immo'
-    image_immo3: '%kernel.project_dir%/web/upload/image_immo'
+    #image_immo: '%kernel.project_dir%/web/upload/image_immo'
+    #image_immo2: '%kernel.project_dir%/web/upload/image_immo'
+    #image_immo3: '%kernel.project_dir%/web/upload/image_immo'
+    brochures_directory: '%kernel.project_dir%/web/upload/image_immo'
 
 framework:
     #esi: ~

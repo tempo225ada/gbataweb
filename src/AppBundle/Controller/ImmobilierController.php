@@ -15,16 +15,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use AppBundle\Service\FileUploader;
 
 
 class ImmobilierController extends Controller
 {
+
     //Ajout d'une offre immobiliere
     /**
      * @Route("/annonceur/add/immobilier", name="add_immobilier")
      */
-
-    public function index ( Request $request) {
+    public function index ( Request $request, FileUploader $fileUploader) {
 
         //Création du formulaire
         $immobilier = new Immobilier();
@@ -39,48 +40,26 @@ class ImmobilierController extends Controller
             $image_immo = $form['image']->getData();
             $image_immo2 = $form['image2']->getData();
             $image_immo3 = $form['image3']->getData();
-            if($image_immo || $image_immo2 || $image_immo3 ) {
+            if($image_immo || $image_immo2 || $image_immo3) {
 
-                $originalFilename = pathinfo($image_immo->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$image_immo->guessExtension();
+                $originalFilename = $fileUploader->upload($image_immo);
                 
-                $originalFilename2 = pathinfo($image_immo2->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename2 = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename2);
-                $newFilename2 = $safeFilename2.'-'.uniqid().'.'.$image_immo2->guessExtension();
+                $originalFilename2 = $fileUploader->upload($image_immo2);
 
-                $originalFilename3 = pathinfo($image_immo3->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename3 = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename3);
-                $newFilename3 = $safeFilename3.'-'.uniqid().'.'.$image_immo3->guessExtension();
+                $originalFilename3 = $fileUploader->upload($image_immo3);
                 
-                //deplacer les images dans le dossier approprié upload/imageimmo
-
-                try {
-                    $image_immo->move(
-                        $this->getParameter('image_immo'),
-                        $newFilename
-                    );
-                    $image_immo2->move(
-                        $this->getParameter('image_immo2'),
-                        $newFilename2
-                    );
-                    $image_immo3->move(
-                        $this->getParameter('image_immo3'),
-                        $newFilename3
-                    );
-                }
-                catch (FileException $e) {
-
-                }
                 $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
                 //$user = $this->getUser()->getId();
                 $user = $this->getUser();
                 $immobilier->setUtilisateur($user);
-                $immobilier->setImageImmo($newFilename);
-                $immobilier->setImageImmo2($newFilename2);
-                $immobilier->setImageImmo3($newFilename3);
+
+                $immobilier->setImageImmo($originalFilename);
+                $immobilier->setImageImmo2($originalFilename2);
+                $immobilier->setImageImmo3($originalFilename3);
+
                 $immobilier->setDatecreation(new \DateTime());
                 $immobilier->setDatemodifcation(new \DateTime());
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($immobilier);
                 $em->flush();
@@ -113,7 +92,7 @@ class ImmobilierController extends Controller
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
         $immobiliers = $repository->findAllImmobilier($search);
         
-
+        // Pagination des offre avec KNP pagination
         $reservations = $paginator->paginate($immobiliers,
                              $request->query->getInt('page', 1), 
                              9 
