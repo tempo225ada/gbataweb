@@ -34,6 +34,10 @@
                     {{ form_label(form.password, 'Mot de passe*') }}
                     {{ form_widget(form.password) }}
                 </div>
+                <div class="form-inscription">
+                    {{ form_label(form.captchaCode, 'Pas un robot, copiez le code ci-dessous dans le champ*') }}
+                    {{ form_widget(form.captchaCode) }}
+                </div>
                 {{ form_row(form.isActive) }}
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
