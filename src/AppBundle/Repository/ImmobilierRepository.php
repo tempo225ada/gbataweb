@@ -48,6 +48,7 @@ class ImmobilierRepository extends \Doctrine\ORM\EntityRepository
         $query->addOrderBy('u.datecreation', 'DESC');
         return $query->getQuery();
     }
+
 }
 
 /*
