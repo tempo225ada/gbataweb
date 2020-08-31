@@ -28,10 +28,18 @@ class DemandeImmo
      */
     private $type;
 
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="bien", type="string", length=20)
+     */
+    private $bien;
+
     /**
      * @var
+     * 
      * @ORM\ManyToOne(targetEntity="bientype")
-     * JoinColumn(name="Typebien_id", referencedColumnName="id")
+     * JoinColumn(name="typebien_id", referencedColumnName="id")
      */
     private $typebien;
 
@@ -247,5 +255,29 @@ class DemandeImmo
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * Set bien
+     *
+     * @param string $bien
+     *
+     * @return DemandeImmo
+     */
+    public function setBien($bien)
+    {
+        $this->bien = $bien;
+
+        return $this;
+    }
+
+    /**
+     * Get bien
+     *
+     * @return string
+     */
+    public function getBien()
+    {
+        return $this->bien;
     }
 }

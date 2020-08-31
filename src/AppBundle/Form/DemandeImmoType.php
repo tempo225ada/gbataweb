@@ -18,8 +18,14 @@ class DemandeImmoType extends AbstractType
             'choices' => [
                 'Location' => 'location',
                 'Vente' => 'vente'
-            ]
-        ])
+                         ]
+                ])
+                ->add('bien', ChoiceType::class, [
+                    'choices' => [
+                        'Maison' => 'maison',
+                        'Terrain' => 'terrain'
+                                    ]
+                ])
                 ->add('commune')
                 ->add('piece')
                 ->add('budget')
