@@ -5,9 +5,10 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class UserEditType extends AbstractType
@@ -29,7 +30,10 @@ class UserEditType extends AbstractType
                         ],
                     ],
                 ])
-                ->add('isActive');
+                ->add('isActive')
+                ->add('captchaCode', CaptchaType::class, array(
+                    'captchaConfig' => 'ExampleCaptcha'
+                  ));
     }
     
     /**

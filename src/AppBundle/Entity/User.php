@@ -69,12 +69,14 @@ class User implements UserInterface, \Serializable
      */
     private $numero;
 
+    //@Assert\Email( 
+     //   * message = "Cette adresse email {{ value }} n'est pas valide.", 
+      //  * checkMX = true 
+     //  * ) 
+     
     /**
      * @ORM\Column(type="string", length=254, unique=true)
-     * @Assert\Email( 
-     * message = "Cette adresse email {{ value }} n'est pas valide.", 
-     * checkMX = true 
-    * ) 
+     * 
      */
     private $email;
 

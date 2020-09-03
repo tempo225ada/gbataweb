@@ -90,7 +90,7 @@ class UserController extends Controller {
      }
 
     /**
-     * @route("/user/{id}/edit", name="edit_user")
+     * @route("/admin/{id}/edit", name="edit_user")
      */
 
     public function edit(User $user, Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder) {
@@ -103,7 +103,7 @@ class UserController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('user_list_immo');
+            return $this->redirectToRoute('list_user');
         }
 
         return $this->render('/user/edit_user.html.twig', [

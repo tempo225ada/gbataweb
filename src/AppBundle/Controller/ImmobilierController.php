@@ -112,9 +112,10 @@ class ImmobilierController extends Controller
      */
 
     public function liste_immobilier_admin() {
+        //$search = new ImmobilierSearch();
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
-        $immobiliers = $repository->findAllImmobilier();
+        $immobiliers = $repository->findAll();
         return $this->render('admin/list/list_immobilier.html.twig', [
             'immobiliers' => $immobiliers
         ]);
