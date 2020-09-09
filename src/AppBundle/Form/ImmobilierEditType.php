@@ -38,6 +38,7 @@ class ImmobilierEditType extends AbstractType
                 ->add('douche')
                 ->add('prix')
                 ->add('description')
+                ->add('etat')
                 ->add('image', FileType::class, [
                     'mapped' => false,
                     'required' => false,

@@ -6,7 +6,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 
-
+/**
+ * Immobilier
+ *
+ * @ORM\Table(name="immobilier")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ImmobilierRepository")
+ */
 class ImmobilierSearch
 {
 
@@ -42,6 +47,7 @@ class ImmobilierSearch
      *
      * @ORM\ManyToOne(targetEntity="Commune")
      * @ORM\JoinColumn(name ="commune_id", referencedColumnName="id")
+     * 
      */
 
     private $commune;

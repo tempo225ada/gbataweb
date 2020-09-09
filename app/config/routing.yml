@@ -4,3 +4,9 @@ app:
     
 captcha_routing:
   resource: "@CaptchaBundle/Resources/config/routing.yml"
+
+how_made:
+    path: /comment-ca-marche
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    pages/how_made_it.html.twig

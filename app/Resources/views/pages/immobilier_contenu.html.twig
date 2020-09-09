@@ -10,7 +10,6 @@
                     <div class="admin-action col"><a href="{{ path('admin_immobilier_edit',{id:immobilier.id})}}" class="btn btn-primary" >Modifier</a> </div>
                 {% endif %} 
 
-                <div class="offre-date col">Publiée le {{ immobilier.datecreation|date("d/m/Y") }}</div>
                 <div class="row">
                     
                     <div class="col-9">
@@ -57,11 +56,17 @@
                     <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo2) }}"/>
                     <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo3) }}"/>
                 </div>
-
-                <div class="col-12 description-immo"> 
-                    <h3>Descrition</h3>
-                    <p>{{ immobilier.description }} </p>
-                </div>
+                {% if is_granted('ROLE_USER') %} 
+                    {% if immobilier.description %}
+                        <div class="col-12 description-immo"> 
+                        <h3>Descrition</h3>
+                        <p>{{ immobilier.description }} </p>
+                    </div>
+                    {% endif %}
+                    <div class="offre-date col-12 offre-descrption-no">Publiée le {{ immobilier.datecreation|date("d/m/Y") }} par {{user_id.username}} il est au <i class="fas fa-phone-alt"></i> {{user_id.numero}}</div>
+                {% else %}
+                    <div class="offre-descrption-no col-12">Veuillez vous <a href="/login">connecter</a> pour avoir plus d'information sur l'annonceur et la description de l'offre</div>
+                {% endif %}
 
             </div>
     </div>

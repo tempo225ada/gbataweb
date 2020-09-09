@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+
 /**
  * Immobilier
  *
@@ -118,6 +119,11 @@ class Immobilier
     * @ORM\Column(name="datemodif",type="datetime")
     */
     private $datemodifcation;
+
+    /**
+     * @ORM\Column(name="is_send", type="boolean")
+     */
+    private $etat;
 
     /**
      * @var string
@@ -529,5 +535,53 @@ class Immobilier
     public function getDatecreation()
     {
         return $this->datecreation;
+    }
+
+    /**
+     * Set datemodifcation
+     *
+     * @param \DateTime $datemodifcation
+     *
+     * @return Immobilier
+     */
+    public function setDatemodifcation($datemodifcation)
+    {
+        $this->datemodifcation = $datemodifcation;
+
+        return $this;
+    }
+
+    /**
+     * Get datemodifcation
+     *
+     * @return \DateTime
+     */
+    public function getDatemodifcation()
+    {
+        return $this->datemodifcation;
+    }
+
+    /**
+     * Set isSend
+     *
+     * @param boolean $isSend
+     *
+     * @return Immobilier
+     */
+    public function setIsSend($isSend)
+    {
+        $this->isSend = $isSend;
+
+        return $this;
+    }
+
+    /**
+     * Get isSend
+     *
+     * @return boolean
+     */
+    public function getIsSend()
+    {
+        return $this->isSend;
     }
 }

@@ -1,3 +1,26 @@
+.offre-descrption-no {
+    background-color: #19a1da;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    margin: 0 0 40px 0;
+}
+
+.offre-descrption-no a{
+    color:#833ab4;
+}
+
+.annonceur.phone {
+    background-color: transparent;
+    margin-top: 0px;
+}
+
+.titre-h2{
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 40px;
+}
+
 .offre-date.col {
     color: #9a9a9a;
     text-align: right;
@@ -182,6 +205,9 @@
 
 .phone .col-sm-6 .row > .col-sm-4 {
     margin-top: 15px;
+color: #097ceb;
+font-weight: bold;
+text-align: center;
 }
 
 .phone .row .col-sm-4 p:nth-child(2) span {
@@ -189,10 +215,13 @@
 }
 
 .phone .col-sm-6 .row > .col-sm-4 p:nth-child(1) {
-    color: #097ceb;
     font-size: 24px;
     text-align: center;
     position: relative;
+}
+
+.annonceur .col-sm-6 .row > .col-sm-4 p {
+    color: #19a1da;
 }
 
 .phone .col-sm-6 .row > .col-sm-4 p:nth-child(1) span {
@@ -269,7 +298,11 @@
     display: block;
     background: linear-gradient(to top, #0a88f0b3 55%, #0a88f033 100%);
     position: relative;
-    top: -346px;
+    top: -345px;
+}
+
+.col-sm-6 iframe {
+    width: 100%;
 }
 
 .paralax span {
@@ -305,11 +338,11 @@
 }
 
 .paralax .para-top {
-    font-size: 42px;
+    font-size: 2.3rem;
     font-weight: bold;
     text-transform: uppercase;
-    padding-right:20%;
-    padding-top: 75px;
+    padding-right: 20%;
+    padding-top: 90px;
 }
 
 .paralax img {
@@ -543,7 +576,7 @@ margin-right: 15px;
 
 .col-12.type-immo-front {
     position: relative;
-    margin-bottom: -26px;
+    margin-bottom: -25px;
     z-index: 2;
     padding: 0 0;
 }

@@ -6,6 +6,7 @@ use AppBundle\AppBundle;
 use AppBundle\Entity\Immobilier;
 use AppBundle\Form\ImmobilierType;
 use AppBundle\Entity\ImmobilierSearch;
+use AppBundle\Entity\User;
 use AppBundle\Form\ImmobilierEditType;
 use AppBundle\Form\ImmobilierSearchType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -96,7 +97,7 @@ class ImmobilierController extends Controller
         $reservations = $paginator->paginate($immobiliers,
                              $request->query->getInt('page', 1), 
                              9 
-                            );
+                        );
 
         return $this->render('pages/immobilier_list.html.twig', [
             'immobiliers' => $reservations,
@@ -168,8 +169,7 @@ class ImmobilierController extends Controller
         return $this->render('/admin/edit/edit_immobilier.html.twig', [
             'form' => $form->createView()
         ]);
-    }
-    
+    } 
 
 
     /**
@@ -183,7 +183,7 @@ class ImmobilierController extends Controller
          $file1 = $immobilier->getImageImmo();
          $file2 = $immobilier->getImageImmo2();
          $file3 = $immobilier->getImageImmo3();
-         
+
          $projectDir = $this->get('kernel')->getProjectDir();
          $filesystem = new Filesystem();
  
@@ -201,12 +201,20 @@ class ImmobilierController extends Controller
          return $this->redirectToRoute('user_list_immo');
      }
 
+
     /**
      * @Route("/offres/immobilier/{id}", name="contenu_immobilier")
      */
 
-    public function contenu_immobilier($id) {
+    public function contenu_immobilier($id,Immobilier $immobilier ) {
+    
+    
+        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
+        $user_id = $immobilier->getUtilisateur(); 
+        // Recherche d'un seul article par son titre
 
+        $product = $repositoryUser->findOneBy(['username' => $user_id->__toString()]);
+      
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
         $immobilier_contenu = $repository->find($id);
@@ -219,9 +227,11 @@ class ImmobilierController extends Controller
         // Sinon si l'article existe
 
         return $this->render('pages/immobilier_contenu.html.twig', [
-            'immobilier' =>  $immobilier_contenu
+            'immobilier' =>  $immobilier_contenu,
+            'user_id'=> $product
         ]);
 
     }
 
+    
 }

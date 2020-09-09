@@ -121,6 +121,12 @@ class Immobilier
     private $datemodifcation;
 
     /**
+     * @ORM\Column(name="is_send", type="boolean")
+     */
+    private $etat;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string")
@@ -434,6 +440,7 @@ class Immobilier
     public function __construct()
     {
         $this->commune = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->etat = false;
     }
 
     /**
@@ -554,5 +561,53 @@ class Immobilier
     public function getDatemodifcation()
     {
         return $this->datemodifcation;
+    }
+
+    /**
+     * Set isSend
+     *
+     * @param boolean $isSend
+     *
+     * @return Immobilier
+     */
+    public function setIsSend($isSend)
+    {
+        $this->isSend = $isSend;
+
+        return $this;
+    }
+
+    /**
+     * Get isSend
+     *
+     * @return boolean
+     */
+    public function getIsSend()
+    {
+        return $this->isSend;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param boolean $etat
+     *
+     * @return Immobilier
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return boolean
+     */
+    public function getEtat()
+    {
+        return $this->etat;
     }
 }
