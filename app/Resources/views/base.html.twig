@@ -43,7 +43,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
             <div class="col-3">
-                <a class="navbar-brand logo-site" href="/"><img src="/upload/slide/logo_gbata.png"></a>
+                <a class="navbar-brand logo-site" href="/"><img src="/upload/image/logo_gbata.png"></a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -87,6 +87,13 @@
             
         </nav>
 
+             {% if app.request.requestUri != '/' and app.request.requestUri != '/login' and app.request.requestUri != '/inscription' %}
+                    <div class="header">
+                        header
+                    </div>
+            {% endif %}
+
+
         {% block body %}
 
         {% endblock %}
@@ -97,13 +104,13 @@
                     <div class="row">
                         <div class="col-sm-4 col-xs-12">
                             <div class="titre-footer">A propos</div>
-                            <div class="content-footer">
-                                <p>Le projet a été initité pour la recherche facile de bien immobilier</p>
+                            <div class="content-footer propos">
+                                <p>Gbata est un service vous permettant de recevoir des offres par sms</p>
                                 <p>Tel: +225 45 452 861</p>
                                 <p>Email: info@gbata.ci</p>
                             </div>
                         </div>
-                        <div class="col-sm-4 col-xs-12">
+                        <div class="col-sm-4 col-xs-12 site">
                             <div class="titre-footer">Liens</div>
                             <div class="content-footer">
                                 <p><a href="/">Accueil</a></p>
@@ -112,7 +119,7 @@
                                 <p><a href="/contact">Contacts</a></p>
                             </div>
                         </div>
-                        <div class="social col-sm-4 col-xs-12">
+                        <div class="social col-sm-4 col-xs-12 social">
                             <div class="row">
                                 <div class="social-text col-sm-6"><p>SUIVEZ NOUS</p></div>
                                 <a href="#" class="col-sm-6 twitt"><i class="fab fa-twitter"></i></a>

@@ -1,3 +1,57 @@
+.propos p:nth-child(1) {
+    padding: 0 25% 0 0;
+}
+
+.container .card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #833ab4;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.container .card-header button {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .6em;
+}
+
+#accordionExample {
+    margin-bottom: 70px;
+}
+
+.header {
+    height: 250px;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.col-sm-12.col-xs-12.how-m p + p {
+    color: #097ceb;
+    padding-left: 5%;
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+    top: -12px;
+}
+
+.col-sm-12.col-xs-12.how-m p + p > span{
+    color: lightsteelblue;
+}
+
+.col-sm-12.col-xs-12.how-m {
+    margin-top: 25px;
+}
+
+.col-sm-12.col-xs-12.how-m p:nth-child(1) span {
+    background-color: #833ab4;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 13px;
+    font-size: 18px;
+    margin-right: 7px;
+}
+
 .offre-descrption-no {
     background-color: #19a1da;
     padding: 15px 0;
@@ -12,7 +66,7 @@
 }
 
 .annonceur.phone {
-    background-color: transparent;
+    background-color: #fff;
     margin-top: 0px;
 }
 
@@ -236,9 +290,10 @@ text-align: center;
 
 .phone-top {
     font-weight: bold;
-    font-size: 28px;
-    line-height: 29px;
+    font-size: 33px;
+    line-height: 41px;
     margin-top: 20px;
+    margin-bottom: 25px;
 }
 
 .voir-plus i {
@@ -301,7 +356,7 @@ text-align: center;
     top: -345px;
 }
 
-.col-sm-6 iframe {
+.col-sm-6.col-image img {
     width: 100%;
 }
 
