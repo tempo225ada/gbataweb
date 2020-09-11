@@ -51,19 +51,3 @@ class ImmobilierRepository extends \Doctrine\ORM\EntityRepository
 
 }
 
-/*
- public function findAllImmobilier(ImmobilierSearch $search){
-        return $this->getEntitymanager()
-            ->createQuery(
-                'SELECT i FROM AppBundle:Immobilier i ORDER by i.datecreation DESC'
-            )
-            ->getResult();
-    }
-
-return $this->createQueryBuilder('u')
-            ->where('u.username = :username OR u.email = :email')
-            ->setParameter('username', $username)
-            ->setParameter('email', $username)
-            ->getQuery()
-            ->getOneOrNullResult();
-            */

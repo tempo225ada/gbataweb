@@ -70,11 +70,6 @@
     margin-top: 0px;
 }
 
-.titre-h2{
-    font-family: 'Poppins', sans-serif;
-    margin-bottom: 40px;
-}
-
 .offre-date.col {
     color: #9a9a9a;
     text-align: right;
@@ -294,6 +289,7 @@ text-align: center;
     line-height: 41px;
     margin-top: 20px;
     margin-bottom: 25px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .voir-plus i {
@@ -900,7 +896,8 @@ line-height: 71px;
   
   /* Make sure all circles are at the same spot */
     .left::after, .right::after {
-      left: 15px;
+        left: 1%;
+        top: 37px !important;
     }
   
   /* Make all right containers behave like the left ones */
@@ -918,4 +915,151 @@ line-height: 71px;
     .col-sm-4.col-xs-12.offre-immo-front {
         margin-bottom: 40px;
     }
+
+    .col-xs-12.offre-immo-front {
+        width: 90% !important;
+        max-width: 100%;
+        margin: 0 auto;
+            margin-bottom: 0px;
+    }
+
+    .slide-text-top.container {
+        font-size: 2.5em;
+        padding: 0 5% 0 5%;
+    }
+
+    .slick-slide.slick-current.slick-active .slide-text {
+        margin-top: -310px;
+        font-size: 3em;
+        padding: 0 5% 0 5%;
+        line-height: 50px;
+    }
+
+    .base .navbar {
+        padding: .1rem 0rem;
+    }
+
+    .social-text.col-sm-5 p {
+        font-size: 14px;
+        margin-bottom: 15px;
+        line-height: 28px;
+    }
+
+    .navbar-brand.logo-site {
+        text-align: center;
+    }
+
+    .navbar-brand.logo-site img {
+        width: 30%;
+    }
+
+    #navbarNavDropdown {
+        padding: 0 0;
+    }
+
+    .navbar-nav li {
+        border-bottom: 1px solid #3333331a;
+    }
+
+    .social.col-sm-2 i {
+        font-size: 17px;
+        top: -3px;
+    }
+
+    .paralax .para-top {
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding-right: 0%;
+        padding-top: 20px;
+    }
+
+    .paralax::after {
+        content: "";
+        height: 450px;
+        display: block;
+        background: linear-gradient(to top, #0a88f0b3 55%, #0a88f033 100%);
+        position: relative;
+        top: -493px;
+    }
+
+    .phone {
+        margin-bottom: 50px;
+    }
+
+    .phone {
+        padding: 20px 0;
+    }
+
+    .phone .voir-plus a {
+        top: 0px;
+    }
+
+    .phone-top {
+        text-align: center;
+    }
+
+    .timeline::after {
+        left: 50%;
+    }
+
+    .block-time-line .container {
+        width: 90%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .left {
+        left: 0%;
+    }
+
+    .contact {
+        letter-spacing: 0px;
+        height: 30vh;
+    }
+
+    .col.contact p {
+        text-align: center;
+    }
+
+    .top a {
+        font-size: 14px;
+    }
+
+    .row.search label {
+        position: relative;
+        top: 9px;
+    }
+
+    .col.offre-immo {
+        margin-top: 75px;
+        padding: 0 0;
+    }
+
+    .bi.bi-chevron-left.slick-arrow {
+        left: 70%;
+        top: 43px;
+    }
+
+    .offre-descrption-no {
+        padding: 15px 3%;
+        font-size: 18px;
+        margin: 25px 0 40px 0;
+    }
+
+}
+
+    @media (max-width:1280px){
+
+    .social-text.col-sm-5 p {
+        font-size: 12px;
+        top: 5px;
+    }
+
+    .social.col-sm-2 i {
+        font-size: 18px;
+        top: 0px;
+        right: 5px;
+    }
+
   }

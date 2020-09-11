@@ -94,13 +94,13 @@ class ImmobilierController extends Controller
         $immobiliers = $repository->findAllImmobilier($search);
         
         // Pagination des offre avec KNP pagination
-        $reservations = $paginator->paginate($immobiliers,
+        $pagination = $paginator->paginate($immobiliers,
                              $request->query->getInt('page', 1), 
                              9 
                         );
 
         return $this->render('pages/immobilier_list.html.twig', [
-            'immobiliers' => $reservations,
+            'immobiliers' => $pagination,
             'form' => $form->createView()
         ]);
 
@@ -112,13 +112,25 @@ class ImmobilierController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
 
-    public function liste_immobilier_admin() {
+    public function liste_immobilier_admin(Request $request, PaginatorInterface $paginator) {
         //$search = new ImmobilierSearch();
+        $search = new ImmobilierSearch();
+        $form = $this->createForm(ImmobilierSearchType::class, $search);
+        $form->handleRequest($request);
+
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
-        $immobiliers = $repository->findAll();
+        //$immobiliers = $repository->findAll();
+        $immobiliers = $repository->findAllImmobilier($search);
+
+        $pagination = $paginator->paginate($immobiliers,
+        $request->query->getInt('page', 1), 
+        20 
+   );
+
         return $this->render('admin/list/list_immobilier.html.twig', [
-            'immobiliers' => $immobiliers
+            'immobiliers' => $pagination,
+            'form' => $form->createView()
         ]);
     }
 
@@ -127,14 +139,18 @@ class ImmobilierController extends Controller
      * @Route("/annonceur/list/immobilier", name="user_list_immo")
      */
 
-    public function user_list_immo() {
+    public function user_list_immo(Request $request, PaginatorInterface $paginator) {
         $user = $this->getUser();
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
         $immobilier = $repository->findByUtilisateur($user);
 
+        $pagination = $paginator->paginate($immobilier,
+        $request->query->getInt('page', 1), 
+        20 
+    );
         return $this->render('user/list_immobilier.html.twig', [
-            'immobiliers' => $immobilier
+            'immobiliers' =>  $pagination
         ]);
 
     }

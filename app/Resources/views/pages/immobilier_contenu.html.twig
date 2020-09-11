@@ -12,15 +12,15 @@
 
                 <div class="row">
                     
-                    <div class="col-9">
+                    <div class="col-sm-9 col-xs-9">
                         <div class="col-12 titre-immo"> {{ immobilier.titre }} </div>
 
                         <div class="row row-offre-contenu">
-                            <div class="col-3 bien-immo"> {{ immobilier.typebien }} </div>
+                            <div class="col-6 bien-immo"> {{ immobilier.typebien }} </div>
                             
                             {% if immobilier.bien == 'maison' %}
                         
-                                <div class="col-2 pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }} Pièces</div>
+                                <div class="col-2 pcs"><i class="fas fa-key"></i>  {{ immobilier.piece }}</div>
                                 <div class="col-2 chbr"> <i class="fas fa-bed"></i> {{ immobilier.chambre }} </div>
                                 <div class="col-2 dwc"> <i class="fas fa-bath"></i> {{ immobilier.douche }} </div>
                         

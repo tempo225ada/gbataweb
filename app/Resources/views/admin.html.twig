@@ -20,13 +20,14 @@ Website: http://www.webthemez.com/
     <!-- Morris Chart Styles-->
     <link href="{{ asset('assets/js/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
     <!-- Custom Styles-->
+     <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/custom-styles.css') }}" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="{{ asset('assets/js/Lightweight-Chart/cssCharts.css') }}"> 
 </head>
 
-<body>
+<body class="admin">
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
@@ -190,9 +191,12 @@ Website: http://www.webthemez.com/
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     {% block javascripts %}
-    <script src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
     <!-- Bootstrap Js -->
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+    <!-- LIST JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
      
     <!-- Metis Menu Js -->
     <script src="{{ asset('assets/js/jquery.metisMenu.js') }}"></script>

@@ -2,43 +2,55 @@
 
 {% block body %}
     <div class="container">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Identifiant</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Numéro</th>
-                <th scope="col">Rôle</th>
-                <th scope="col">Email</th>
-                
-            </tr>
-            </thead>
-    {% for user in users %}
-            <tbody>
-            <tr>
-                <td> {{ user.id }} </td>
-                <td> {{ user.username }} </td>
-                <td> {{ user.numero }} </td>
-                <td> 
-                    {% for role in user.roles %}
-                        {% if role == 'ROLE_ADMIN' %}
-                            Administrateur
-                        {% elseif role== 'ROLE_USER' %}
-                            Utilisateur
-                        {% else %}
-                            Annonceur
-                        {% endif %}
+        <div id="user">
+            <h2 class="titre-page"> Liste des utlisateur</h2>
+
+            <input class="search" placeholder="Numero" />
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Identifiant</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Numéro</th>
+                        <th scope="col">Rôle</th>
+                        <th scope="col">Email</th>
+                        
+                    </tr>
+                    </thead>
+                    {% for user in users %}
+                    <tbody class="list">
+                    <tr>
+                        <td> {{ user.id }} </td>
+                        <td class="name"> {{ user.username }} </td>
+                        <td class="numero"> {{ user.numero }} </td>
+                        <td> 
+                            {% for role in user.roles %}
+                                {% if role == 'ROLE_ADMIN' %}
+                                    Administrateur
+                                {% elseif role== 'ROLE_USER' %}
+                                    Utilisateur
+                                {% else %}
+                                    Annonceur
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td> {{ user.email }} </td>
+                        <td> <a href="{{ path('edit_user',{
+                                        id:user.id
+                                })
+                                }}" class="btn btn-primary">Modifier</a> </td>
+                        
+                    </tr>
+                    </tbody>
                     {% endfor %}
-                </td>
-                <td> {{ user.email }} </td>
-                <td> <a href="{{ path('edit_user',{
-                                id:user.id
-                        })
-                        }}">Modifier</a> </td>
-                
-            </tr>
-            </tbody>
-    {% endfor %}
-        </table>
+                </table>
+            </div>
+        </div>
     </div>
+    <script type="text/javascript">
+        var options = { valueNames: [ 'numero','name' ] };
+        var userList = new List('user', options);
+    </script>
 {% endblock %}

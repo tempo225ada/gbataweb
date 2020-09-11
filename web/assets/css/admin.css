@@ -1,0 +1,12 @@
+.titre-page {
+    color: #908888;
+    margin-bottom: 35px;
+}
+
+.row.search {
+    margin-bottom: 30px;
+}
+
+.col-sm-4.col-xs-12.btn.search {
+    margin-top: 20px;
+}

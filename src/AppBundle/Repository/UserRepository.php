@@ -3,6 +3,8 @@
 // src/AppBundle/Repository/UserRepository.php
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\User;
+use AppBundle\Entity\UserSearch;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
@@ -17,5 +19,7 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+  
 }
 
