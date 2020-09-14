@@ -3,6 +3,31 @@
 {% block body %}
 
     <div class="container">
+          <h2 class="titre-page">Liste de toutes les demandes immobilière</h2>
+        <form action="{{ path('admin_list_demande_immo')}}" metho="get">
+            <div class="row">
+                <div class="col-3">
+                    <label for="filter">Commune</label>
+                    <input name="commune" type="text">
+                </div>
+                <div class="col-3">
+                    <label for="filter">Pièce</label>
+                    <input name="piece" type="text">
+                </div>
+                <div class="col-3">    
+                    <label for="filter">Budget Min</label>
+                    <input name="budgetmin" type="text">
+                </div>
+
+                <div class="col-3">    
+                    <label for="filter">Budget Max</label>
+                    <input name="budgetmax" type="text">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary search">Rechercher</button>
+           
+        </form>
+
         <table class="table">
             <thead>
                 <tr>
@@ -21,7 +46,7 @@
                         <td> {{ demande.commune}} </td>
                         <td> {{ demande.piece}} </td>
                         <td> {{ demande.budget }} </td>
-                        <td> <a href="{{ path('admin_demande_immo_edit',{ id:demande.id}) }}">
+                        <td> <a href="{{ path('admin_demande_immo_edit',{ id:demande.id}) }}" class="btn btn-primary">
                                 Modifier</a> </td>
                     </tr>
                 </tbody>

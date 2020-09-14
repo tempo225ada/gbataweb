@@ -2,13 +2,19 @@
 
 {% block body %}
     <div class="container">
+        <form action="{{ path('list_user')}}" metho="get">
+            <label for="filter">Recherche</label>
+            <input name="filter" type="text">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+
+        </form>
         <div id="user">
-            <h2 class="titre-page"> Liste des utlisateur</h2>
+            <h2 class="titre-page"> Liste des utlisateurs</h2>
 
             <input class="search" placeholder="Numero" />
 
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped list">
                     <thead>
                     <tr>
                         <th scope="col">Identifiant</th>
@@ -20,7 +26,7 @@
                     </tr>
                     </thead>
                     {% for user in users %}
-                    <tbody class="list">
+                    <tbody >
                     <tr>
                         <td> {{ user.id }} </td>
                         <td class="name"> {{ user.username }} </td>

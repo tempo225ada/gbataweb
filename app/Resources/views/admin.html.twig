@@ -25,6 +25,9 @@ Website: http://www.webthemez.com/
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="{{ asset('assets/js/Lightweight-Chart/cssCharts.css') }}"> 
+       <script type="text/javascript" src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 </head>
 
 <body class="admin">
@@ -98,6 +101,7 @@ Website: http://www.webthemez.com/
                                 {% if is_granted('ROLE_ANNONCEUR') %} 
                                 <li>
                                     <a href="{{path('user_list_immo')}}">Mes offres</a>
+                                    <a href="{{path('admin_list_demande_immo')}}">Toutes les demandes</a>
                                 </li>
                             {% endif %}
                         </ul>
@@ -191,12 +195,11 @@ Website: http://www.webthemez.com/
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
+ 
     <!-- Bootstrap Js -->
     <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
     <!-- LIST JS -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
      
     <!-- Metis Menu Js -->
     <script src="{{ asset('assets/js/jquery.metisMenu.js') }}"></script>
@@ -212,6 +215,7 @@ Website: http://www.webthemez.com/
     
     <!-- Custom Js -->
     <script src="{{ asset('assets/js/custom-scripts.js') }}"></script>
+
 
       
     <!-- Chart Js 

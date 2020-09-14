@@ -16,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Knp\Component\Pager\PaginatorInterface;
 
 
 class UserController extends Controller {
@@ -52,15 +53,32 @@ class UserController extends Controller {
      * @Route("/admin/list/user", name="list_user")
      */
 
-    public function list() {
+    public function list(Request $request,PaginatorInterface $paginator) {
 
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:User');
-        $user = $repository->findAll();
+
+        if($request->query->getAlnum('filter')) {
+            $repository= $repository->createQueryBuilder('us');
+            $repository
+                       ->where('us.numero LIKE :numero')
+                       ->setParameter('numero','%'. $request->query->getAlnum('filter').'%');
+            $pagination = $repository->getQuery();
+            $pagination = $pagination->getResult();          
+        }
+        else{
+            $pagination = $repository->findAll();
+        }
+        
+       /* $user = $repository->findAll();
+
+        $pagination = $paginator->paginate($user,
+        $request->query->getInt('page', 1), 
+        3 );*/
         
         //$user = $repository->findUserNumero($numero);
         return $this->render('admin/list/list_user.html.twig', array(
-            'users'=> $user,
+            'users'=> $pagination,
            // 'form'=> $form->createView()
         ));
     }

@@ -10,3 +10,16 @@
 .col-sm-4.col-xs-12.btn.search {
     margin-top: 20px;
 }
+
+.col-3 {
+    width: 25%;
+    position: relative;
+    min-height: 1px;
+    float: left;
+    box-sizing: content-box;
+}
+
+.btn.btn-primary.search {
+    margin-top: 25px;
+    margin-bottom: 50px;
+}

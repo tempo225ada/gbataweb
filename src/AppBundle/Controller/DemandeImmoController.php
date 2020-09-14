@@ -5,9 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\DemandeImmo;
 use AppBundle\Form\DemandeImmoType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
 
 class DemandeImmoController extends Controller
 {
@@ -55,18 +56,60 @@ class DemandeImmoController extends Controller
     }
 
     /**
-     * @Route("/admin/list/demande/immo", name="admin_list_demande_immo")
+     * @Route("/annonceur/list/demande/immo", name="admin_list_demande_immo")
      * @return string
      */
 
-    public function list() {
+    public function list(Request $request,PaginatorInterface $paginator) {
 
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository(DemandeImmo::class);
-        $demande = $repository->findAll();
+
+        if($request->query->getAlnum('piece')) {
+            $repository= $repository->createQueryBuilder('di');
+            $repository
+                       ->andWhere('di.piece = :piece')
+                       ->setParameter('piece',$request->query->getAlnum('piece'));
+            $pagination = $repository->getQuery();
+            $pagination = $pagination->getResult();
+        }
+
+        elseif($request->query->getAlnum('commune')) {
+            $repository= $repository->createQueryBuilder('di');
+            $repository
+                       ->andWhere('di.commune = :commune')
+                       ->setParameter('commune',$request->query->getAlnum('commune'));
+            $pagination = $repository->getQuery();
+            $pagination = $pagination->getResult();
+        }
+
+        elseif($request->query->getAlnum('budgetmin')) {
+            $repository= $repository->createQueryBuilder('di');
+            $repository
+                       ->andWhere('di.budget >= :budgetmin')
+                       ->setParameter('budgetmin',$request->query->getAlnum('budgetmin'));
+            $pagination = $repository->getQuery();
+            $pagination = $pagination->getResult();
+        }
+        
+        elseif($request->query->getAlnum('budgetmax')) {
+            $repository= $repository->createQueryBuilder('di');
+            $repository
+                       ->andWhere('di.budget <= :budgetmax')
+                       ->setParameter('budgetmax',$request->query->getAlnum('budgetmax'));
+            $pagination = $repository->getQuery();
+            $pagination = $pagination->getResult();
+        }
+
+
+
+        else{
+            
+            $pagination = $repository->findAll();
+        }
 
         return $this->render('admin/list/list_demande_immo.html.twig', [
-            'demandes' => $demande
+            'demandes' => $pagination
         ]);
     }
 
