@@ -56,7 +56,7 @@ class DemandeImmoController extends Controller
     }
 
     /**
-     * @Route("/annonceur/list/demande/immo", name="admin_list_demande_immo")
+     * @Route("/admin/list/demande/immo", name="admin_list_demande_immo")
      * @return string
      */
 
@@ -101,8 +101,6 @@ class DemandeImmoController extends Controller
             $pagination = $pagination->getResult();
         }
 
-
-
         else{
             
             $pagination = $repository->findAll();
@@ -112,6 +110,8 @@ class DemandeImmoController extends Controller
             'demandes' => $pagination
         ]);
     }
+
+
 
     /**
      * @Route("/admin/demande/immo/{id}/edit", name="admin_demande_immo_edit")

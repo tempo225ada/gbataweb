@@ -54,7 +54,7 @@ Website: http://www.webthemez.com/
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="{{path('edit_profile_user')}}"><i class="fa fa-user fa-fw"></i>Profile</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                       <!-- <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a> -->
                         </li>
                         <li class="divider"></li>
                         <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>
@@ -92,6 +92,9 @@ Website: http://www.webthemez.com/
                                 <li>
                                     <a href="{{path('list_user')}}">Utilisateur</a>
                                 </li>
+                                 <li>
+                                <a href="{{path('admin_list_demande_immo')}}">Toutes les demandes</a>
+                                 </li>
                                 {% endif %}
                                 
                                 <li>
@@ -101,7 +104,7 @@ Website: http://www.webthemez.com/
                                 {% if is_granted('ROLE_ANNONCEUR') %} 
                                 <li>
                                     <a href="{{path('user_list_immo')}}">Mes offres</a>
-                                    <a href="{{path('admin_list_demande_immo')}}">Toutes les demandes</a>
+                                    
                                 </li>
                             {% endif %}
                         </ul>
@@ -184,6 +187,7 @@ Website: http://www.webthemez.com/
 
         {% block body %} 
          
+      
             
         {% endblock %}
         </div>

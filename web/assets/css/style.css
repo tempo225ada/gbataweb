@@ -1,3 +1,13 @@
+.fa-external-link-alt{
+    font-size: 12px;
+    color:#fff;
+    left:3px;
+}
+
+.slide-text-top + img {
+    filter: brightness(80%);
+}
+
 .propos p:nth-child(1) {
     padding: 0 25% 0 0;
 }
@@ -24,6 +34,16 @@
     height: 250px;
     margin-bottom: 70px;
     text-align: center;
+    background-image: url(/upload/slide/header.jpg);
+}
+
+.header::after {
+    content: "";
+    height: 250px;
+    display: block;
+    background: linear-gradient(to top, #000000b3 100%, transparent 0%);
+    position: relative;
+    top: 0px;
 }
 
 .col-sm-12.col-xs-12.how-m p + p {
@@ -343,14 +363,14 @@ text-align: center;
     margin-bottom: 50px;
 }
 
-.paralax::after {
+/*.paralax::after {
     content: "";
     height: 450px;
     display: block;
     background: linear-gradient(to top, #0a88f0b3 55%, #0a88f033 100%);
     position: relative;
     top: -345px;
-}
+}*/
 
 .col-sm-6.col-image img {
     width: 100%;
@@ -379,7 +399,7 @@ text-align: center;
 }
 
 .paralax {
-    background-image: url(/upload/slide/paralax.jpg);
+    background-image: url(/upload/slide/abj-bg-blue.jpg);
     height: 450px;
     background-attachment: fixed;
     background-position: 50% -143px;
@@ -709,7 +729,7 @@ margin-right: 15px;
 animation: fadeinup 0.7s ease-in 400ms both;
 position: relative;
 margin-top: -310px;
-font-size: 4em;
+font-size: 3.5em;
 color: #fff;
 font-weight: bold;
 padding: 0 23% 0 0;

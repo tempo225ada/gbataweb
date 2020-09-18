@@ -10,3 +10,21 @@ how_made:
     defaults:
         _controller: FrameworkBundle:Template:template
         template:    pages/how_made_it.html.twig
+
+contact:
+    path: /contact
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    pages/contacts.html.twig
+
+administration:
+    path: /user/tableau-de-bord
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    admin.html.twig
+
+leprojet:
+    path: /le-projet
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    pages/le_projet.html.twig

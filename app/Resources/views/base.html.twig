@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>{% block title %}Bienvenue{% endblock %}</title>
+        <title>{% block title %}Gbata bienvenue{% endblock %}</title>
+        <link rel="icon" href="/upload/slide/logo_gbata.ico">
         {% block stylesheets %}
               <!--- CSS personalisé -->
                 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
@@ -32,7 +33,7 @@
                             <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                             <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
                         </svg> </a></li>
-                        <li class="navbar-nav connexion"><a class="a" href="{{ path('logout') }}"><i class="fas fa-sign-out-alt"></i></a></li>
+                        
                     {% else %}
                         <li class="navbar-nav"><a class="a" href="/login">Se connecter <i class="fas fa-sign-in-alt"></i></a></li>
                     {% endif %}
@@ -89,7 +90,7 @@
 
              {% if app.request.requestUri != '/' and app.request.requestUri != '/login' and app.request.requestUri != '/inscription' %}
                     <div class="header">
-                        header
+                       
                     </div>
             {% endif %}
 
@@ -108,6 +109,7 @@
                                 <p>Gbata est un service vous permettant de recevoir des offres par sms</p>
                                 <p>Tel: +225 45 452 861</p>
                                 <p>Email: info@gbata.ci</p>
+                                <p><a href="https://lotissement.ci/" target="_blank" style="color:#19A1DA;">Lotissement.ci <i class="fas fa-external-link-alt"></i></a></p>
                             </div>
                         </div>
                         <div class="col-sm-4 col-xs-12 site">
