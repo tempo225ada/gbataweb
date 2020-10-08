@@ -65,7 +65,8 @@
                     {% endif %}
                     <div class="offre-date col-12 offre-descrption-no">Publiée le {{ immobilier.datecreation|date("d/m/Y") }} par {{user_id.username}} il est au <i class="fas fa-phone-alt"></i> {{user_id.numero}}</div>
                 {% else %}
-                    <div class="offre-descrption-no col-12">Veuillez vous <a href="/login">connecter</a> pour avoir plus d'information sur l'annonceur et la description de l'offre</div>
+                    <div class="offre-descrption-no col-12">Veuillez vous <a href="/login">connecter</a> pour avoir plus d'information sur 
+                    l'annonceur et la description de l'offre. </div>
                 {% endif %}
 
             </div>
