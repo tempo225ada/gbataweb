@@ -1,3 +1,7 @@
+.col-12.col-date-modif {
+    color: #888;
+}
+
 .dropdown-menu {
     padding: 0px !important;
 }
@@ -321,7 +325,7 @@ text-align: center;
     padding: 0 8px;
 }
 
-.navbar-brand.logo-site img {
+.logo-site img {
     width: 25%;
 }
 

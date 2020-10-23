@@ -37,3 +37,4 @@ services:
     AppBundle\Service\FileUploader:
         arguments:
             $targetDirectory: '%brochures_directory%'
+    

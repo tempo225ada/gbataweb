@@ -177,6 +177,7 @@ class ImmobilierController extends Controller
 
         if ( $form->isSubmitted() && $form->isValid()) {
             $immobilier = $form->getData();
+            $immobilier->setDatemodifcation(new \DateTime());
             $em->persist($immobilier);
             $em->flush();
             return $this->redirectToRoute('user_list_immo');

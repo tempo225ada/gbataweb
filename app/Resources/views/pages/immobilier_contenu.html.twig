@@ -11,8 +11,14 @@
                 {% endif %} 
 
                 <div class="row">
+
                     
-                    <div class="col-sm-9 col-xs-9">
+                    <div class="col-sm-9 col-9">
+                        {% if immobilier.datecreation == immobilier.datemodifcation %}
+                        <div class="col-12 col-date-modif">Publiée le {{ immobilier.datecreation|date("d/m/y") }} </div>
+                        {% else %}
+                        <div class="col-12 col-date-modif">Modifié le {{ immobilier.datemodifcation|date("d/m/y") }} </div>
+                        {% endif %}
                         <div class="col-12 titre-immo"> {{ immobilier.titre }} </div>
 
                         <div class="row row-offre-contenu">
