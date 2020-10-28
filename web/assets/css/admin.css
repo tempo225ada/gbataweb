@@ -23,3 +23,11 @@
     margin-top: 25px;
     margin-bottom: 50px;
 }
+
+#ExampleCaptcha_CaptchaDiv {
+    width: 40% !important;
+}
+
+#ExampleCaptcha_CaptchaImageDiv{
+    width: 100% !important;
+}

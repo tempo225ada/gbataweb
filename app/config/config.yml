@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
     #image_immo: '%kernel.project_dir%/web/upload/image_immo'
     #image_immo2: '%kernel.project_dir%/web/upload/image_immo'
     #image_immo3: '%kernel.project_dir%/web/upload/image_immo'
@@ -14,7 +14,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'

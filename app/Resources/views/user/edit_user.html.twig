@@ -6,7 +6,8 @@
             {{ form_row(form.email) }}
             {{ form_row(form.roles) }}
             {{ form_row(form.isActive) }}
-            <button type="submit">Modifier</button>
+             {{ form_row(form.captchaCode) }}
+            <button type="submit" class="btn btn-primary">Modifier</button>
 
         {{ form_end(form) }}
     </div>

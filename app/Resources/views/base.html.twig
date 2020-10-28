@@ -16,11 +16,22 @@
         {% endblock %}
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f97093e968068001900dcf8&product=sop' async='async'></script>
     
-    <meta property="og:title" content="GBATA, annonce immobilière par SMS" />
+    <meta property="og:title" content="GBATA, service d'annonce immobilière par SMS" />
     <meta property="og:url" content="https://www.gbata.xyz" />
     <!--<meta property="og:image" content="http://sharethis.com/images/logo.jpg" />
    <meta property="og:description" content="GBATA votre service d'annoce immobilière par SMS. Inscrivez vous et postez votre demande" />-->
    <meta property="og:site_name" content="Gbata" />
+
+    <!-- Matomo --> 
+            <script type="text/javascript"> 
+            var _paq = window._paq = window._paq || []; /* tracker methods like "setCustomDimension" should be called before "trackPageView" */ 
+            _paq.push(['trackPageView']); _paq.push(['enableLinkTracking']); 
+            (function() { var u="//matomo.snpci.org/"; 
+            _paq.push(['setTrackerUrl', u+'matomo.php']); 
+            _paq.push(['setSiteId', '2']); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; 
+            g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s); })(); 
+            </script> 
+            <!-- End Matomo Code -->
     
     </head>
     <body class="base">
@@ -28,7 +39,7 @@
         <div class="row">
             <div class="col">
                 <span class="tel"><i class="fas fa-phone-alt"></i> (+225) 45 45 28 61</span>
-                <span class="mail"><i class="fas fa-envelope"></i> info@gbata.ci</span>
+                <span class="mail"><i class="fas fa-envelope"></i> info@gbata.xyz</span>
             </div>
             <div class="col">
                 <ul class="navbar-nav" style="float:right;display: block;">
@@ -70,6 +81,10 @@
                          <a class="nav-link" href="/le-projet">Le Projet </a>
                     </li>
 
+                     <li class="nav-item">
+                         <a class="nav-link" href="/comment-ca-marche">Utiliser</a>
+                    </li>
+
                      <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Offres
@@ -88,8 +103,8 @@
             <div class="social col-lg-2">
                 <div class="row">
                     <div class="social-text col-lg-5 col-12"><p>SUIVEZ NOUS</p></div>
-                    <a href="#" class="col-lg-2 twitt col-4"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="col-lg-2 face col-4"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/gbataservice" target="_blank" class="col-lg-2 twitt col-4"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/gbataservice" class="col-lg-2 face col-4"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="col-lg-2 insta col-4"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
@@ -116,7 +131,7 @@
                             <div class="content-footer propos">
                                 <p>Gbata est un service vous permettant de recevoir des offres par sms</p>
                                 <p>Tel: +225 45 452 861</p>
-                                <p>Email: info@gbata.ci</p>
+                                <p>Email: info@gbata.xyz</p>
                                 <p><a href="https://lotissement.ci/" target="_blank" style="color:#19A1DA;">Lotissement.ci <i class="fas fa-external-link-alt"></i></a></p>
                             </div>
                         </div>
@@ -125,6 +140,7 @@
                             <div class="content-footer">
                                 <p><a href="/">Accueil</a></p>
                                 <p><a href="/le-projet">Le projet</a></p>
+                                <p><a href="/comment-ca-marche">Utiliser</a></p>
                                 <p><a href="{{path('list_immobilier')}}">Immobilier</a></p>
                                 <p><a href="/contact">Contacts</a></p>
                             </div>
@@ -132,8 +148,8 @@
                         <div class="col-lg-4 col-12 social">
                             <div class="row">
                                 <div class="social-text col-lg-6 col-12 "><p>SUIVEZ NOUS</p></div>
-                                <a href="#" class="col-lg-6 col-12 twitt"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="col-lg-6 col-12 face"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com/gbataservice" target="_blank" class="col-lg-6 col-12 twitt"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/gbataservice" target="_blank" class="col-lg-6 col-12 face"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#" class="col-lg-6 col-12 insta"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
@@ -160,6 +176,7 @@
 
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         
+
         {% endblock %}
     </body>
 </html>

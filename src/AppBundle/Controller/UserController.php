@@ -105,7 +105,7 @@ class UserController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('user_list_immo');
+            return $this->redirectToRoute('administration');
         }
 
         return $this->render('/user/edit_profile_user.html.twig', [

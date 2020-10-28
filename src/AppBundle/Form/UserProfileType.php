@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserProfileType extends AbstractType
@@ -16,7 +17,10 @@ class UserProfileType extends AbstractType
     {
         $builder->add('username')
                 ->add('password', PasswordType::class)
-                ->add('email');
+                ->add('email')
+                ->add('captchaCode', CaptchaType::class, array(
+                    'captchaConfig' => 'ExampleCaptcha'
+                  ));
     }
     
     /**

@@ -21,6 +21,17 @@
     <meta property="og:image" content="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" />
    <!-- <meta property="og:description" content="GBATA votre service d'annoce immobilière par SMS. Inscrivez vous et postez votre demande" />-->
     <meta property="og:site_name" content="Gbata" />
+
+     <!-- Matomo --> 
+            <script type="text/javascript"> 
+            var _paq = window._paq = window._paq || []; /* tracker methods like "setCustomDimension" should be called before "trackPageView" */ 
+            _paq.push(['trackPageView']); _paq.push(['enableLinkTracking']); 
+            (function() { var u="//matomo.snpci.org/"; 
+            _paq.push(['setTrackerUrl', u+'matomo.php']); 
+            _paq.push(['setSiteId', '2']); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; 
+            g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s); })(); 
+            </script> 
+            <!-- End Matomo Code -->
     </head>
 
     <body class="base">
@@ -68,6 +79,10 @@
 
                      <li class="nav-item">
                          <a class="nav-link" href="/le-projet">Le Projet </a>
+                    </li>
+
+                     <li class="nav-item">
+                         <a class="nav-link" href="/comment-ca-marche">Utiliser</a>
                     </li>
 
                      <li class="nav-item dropdown">
@@ -202,6 +217,7 @@
                             <div class="content-footer">
                                 <p><a href="/">Accueil</a></p>
                                 <p><a href="/le-projet">Le projet</a></p>
+                                <p><a href="/comment-ca-marche">Utiliser</a></p>
                                 <p><a href="{{path('list_immobilier')}}">Immobilier</a></p>
                                 <p><a href="/contact">Contacts</a></p>
                             </div>
@@ -222,7 +238,7 @@
         {% endblock %}
 
         {% block javascripts %}
-
+        
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
