@@ -1,3 +1,26 @@
+.navbar-nav.connexion a {
+    color: #fff !important;
+    font-size: 15px !important;
+    position: relative;
+    top: -5px;
+}
+
+.col-md-2.col-12.col-contact {
+    margin-top: 55px;
+    padding-top: 25px;
+    height: 150px;
+    color: #00000078;
+    font-size: 17px;
+}
+
+.col-contact span,.col-contact i{
+    color: #000;
+}
+
+.col-contact .fas.fa-phone-alt {
+    font-size: 12px;
+}
+
 .col-12.offre-immo-front {
     margin: 0 auto 40px;
 }
@@ -189,9 +212,10 @@
     margin-bottom: 50px;
 }
 
-.bi.bi-person-circle {
+.bi.bi-person-circle,.bi.bi-plus-circle {
     position: relative;
-    top: -14px;
+    top: -2px;
+    left: 5px;
 }
 
 #appbundle_user_numero + p {
@@ -614,7 +638,7 @@ font-weight: bold;
 }
 
 .bi.bi-chevron-left.slick-arrow {
-    left: 92%;
+    left: 90%;
     position: relative;
     top: 44px;
 }
@@ -655,8 +679,16 @@ margin-right: 15px;
 }
 
 .image-immo img {
-    width: 100%;
+    width: 100% !important;
+    max-width: 877px;
+    max-height: 550px;
 }
+
+/*.image-immo {
+    width: 100% !important;
+    max-width: 877px;
+    max-height: 650px;
+}*/
 
 .row.row-com-bien .col {
     position: relative;

@@ -230,7 +230,8 @@ class ImmobilierController extends Controller
         $user_id = $immobilier->getUtilisateur(); 
         // Recherche d'un seul article par son titre
 
-        $product = $repositoryUser->findOneBy(['username' => $user_id->__toString()]);
+        $username = $repositoryUser->findOneBy(['username' => $user_id->__toString()]);
+        $usermail = $repositoryUser->findOneBy(['email' => $user_id->__toString()]);
       
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
@@ -245,7 +246,7 @@ class ImmobilierController extends Controller
 
         return $this->render('pages/immobilier_contenu.html.twig', [
             'immobilier' =>  $immobilier_contenu,
-            'user_id'=> $product
+            'user_name'=> $username
         ]);
 
     }

@@ -45,11 +45,18 @@
                 <ul class="navbar-nav" style="float:right;display: block;">
             
                     {% if is_granted('ROLE_USER') %} 
-                        <li class="navbar-nav connexion"><a class="nav-link" href="{{ path('administration') }}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <li class="navbar-nav connexion"><a class="nav-link" href="{{ path('add_immobilier') }}">Publier une offre<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg></a></li>
+                        
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %} 
+                        <li class="navbar-nav connexion"><a class="nav-link" href="{{ path('administration') }}">Zone Admin<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
                             <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                             <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
-                        </svg> </a></li>
+                        </svg></a></li>
                         
                     {% else %}
                         <li class="navbar-nav"><a class="a" href="/login">Se connecter <i class="fas fa-sign-in-alt"></i></a></li>
@@ -119,13 +126,14 @@
 
 
 {% block body %}
-    <div class="container">   
-              
-            <div class="col offre-immo">
+        
+    <div class="row justify-content-md-center">
 
-                {% if is_granted('ROLE_ANNONCEUR') %} 
-                    <div class="admin-action col"><a href="{{ path('admin_immobilier_edit',{id:immobilier.id})}}" class="btn btn-primary" >Modifier</a> </div>
+        {% if is_granted('ROLE_ANNONCEUR') %} 
+                    <div class="admin-action col-12 col-md-8"><a href="{{ path('admin_immobilier_edit',{id:immobilier.id})}}" class="btn btn-primary" >Modifier</a> </div>
                 {% endif %} 
+        <div class="col-md-10 col-lg-8 col-xl-6 col-12">      
+            <div class="col-12 offre-immo">
 
                 <div class="row">
 
@@ -156,7 +164,7 @@
                     {% set twigVariable = immobilier.prix %}
                        <p><span id="prix"> </span>   <span>fcfa</span>
                             {% if immobilier.type == 'location' %}
-                            <span>/mois</span>
+                            <span style="display:block;font-size:13px;position: relative;top: -12px;">par mois</span>
                             {% endif %}
                         </p>
 
@@ -168,16 +176,17 @@
                             document.getElementById("prix").innerHTML = prix;                             
                        </script>
 
-                        <div class="col comm-immo"><i class="fas fa-map-marker-alt"></i> {{ immobilier.commune }} </div>
+                        <div class="col-12 comm-immo"><i class="fas fa-map-marker-alt"></i> {{ immobilier.commune }} </div>
                     </div>
                 </div>
 
                 <div class="col-12 type-immo-contenu"> <span>{{ immobilier.type }} </span></div>
-
-                <div class="col-12 image-immo">
-                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}"/>
-                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo2) }}"/>
-                    <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo3) }}"/>
+                <div class="col-sm-12">
+                    <div class="col-12 image-immo">
+                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}"/>
+                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo2) }}"/>
+                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo3) }}"/>
+                    </div>
                 </div>
                 {% if is_granted('ROLE_USER') %} 
                     {% if immobilier.description %}
@@ -186,7 +195,7 @@
                         <p>{{ immobilier.description }} </p>
                     </div>
                     {% endif %}
-                    <div class="offre-date col-12 offre-descrption-no">Publiée le {{ immobilier.datecreation|date("d/m/Y") }} par {{user_id.username}} il est au <i class="fas fa-phone-alt"></i> {{user_id.numero}}</div>
+                    
                 {% else %}
                     <div class="offre-descrption-no col-12">Veuillez vous <a href="/login">connecter</a> pour avoir plus d'information sur 
                     l'annonceur et la description de l'offre. </div>
@@ -195,6 +204,20 @@
             <!-- ShareThis BEGIN -->
                 <div class="sharethis-inline-share-buttons"></div>
             <!-- ShareThis END -->
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 col-12 col-contact">
+        {% if is_granted('ROLE_USER') %} 
+            <div class="offre-contact">
+                <div>Publiée le <span>{{ immobilier.datecreation|date("d/m/Y") }}</span></div>
+                <div>par <span>{{user_name.username}} <span></div>
+                <div>il est au <span><i class="fas fa-phone-alt"></i> {{user_name.numero}}</span></div>
+                <div>Email: <span>{{user_name.email}}<span></div>
+            </div>
+        {% else %}
+            <div class="offre-descrption-no col-12">Veuillez vous <a href="/login">connecter</a> pour avoir plus d'information sur 
+                    l'annonceur</div>
+        {% endif %}
+        </div>
     </div>
 
 {% endblock %}
