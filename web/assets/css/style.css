@@ -1,6 +1,6 @@
 .navbar-nav.connexion a {
     color: #fff !important;
-    font-size: 15px !important;
+    font-size: 13px !important;
     position: relative;
     top: -5px;
 }
@@ -571,7 +571,7 @@ text-align: center;
 
 .top a svg {
     color: #fff;
-    font-size: 23px;
+    font-size: 20px;
     position: relative;
     top: -8px;
     transition: .3s;
@@ -678,17 +678,9 @@ margin-right: 15px;
     margin-bottom: 15px;
 }
 
-.image-immo img {
-    width: 100% !important;
-    max-width: 877px;
-    max-height: 550px;
+.image-immo {
+    padding: 0 0;
 }
-
-/*.image-immo {
-    width: 100% !important;
-    max-width: 877px;
-    max-height: 650px;
-}*/
 
 .row.row-com-bien .col {
     position: relative;

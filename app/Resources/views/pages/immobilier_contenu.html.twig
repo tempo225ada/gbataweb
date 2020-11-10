@@ -132,7 +132,7 @@
         {% if is_granted('ROLE_ANNONCEUR') %} 
                     <div class="admin-action col-12 col-md-8"><a href="{{ path('admin_immobilier_edit',{id:immobilier.id})}}" class="btn btn-primary" >Modifier</a> </div>
                 {% endif %} 
-        <div class="col-md-10 col-lg-8 col-xl-6 col-12">      
+        <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">      
             <div class="col-12 offre-immo">
 
                 <div class="row">
@@ -183,9 +183,9 @@
                 <div class="col-12 type-immo-contenu"> <span>{{ immobilier.type }} </span></div>
                 <div class="col-sm-12">
                     <div class="col-12 image-immo">
-                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}"/>
-                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo2) }}"/>
-                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo3) }}"/>
+                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" style=" width: 100% !important;max-width: 877px;max-height: 550px;" />
+                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo2) }}" style=" width: 100% !important;max-width: 877px;max-height: 550px;"/>
+                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo3) }}" style=" width: 100% !important;max-width: 877px;max-height: 550px;"/>
                     </div>
                 </div>
                 {% if is_granted('ROLE_USER') %} 
@@ -201,11 +201,9 @@
                     l'annonceur et la description de l'offre. </div>
                 {% endif %}
             </div>
-            <!-- ShareThis BEGIN -->
-                <div class="sharethis-inline-share-buttons"></div>
-            <!-- ShareThis END -->
+           
         </div>
-        <div class="col-md-2 col-lg-2 col-xl-2 col-12 col-contact">
+        <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 col-contact">
         {% if is_granted('ROLE_USER') %} 
             <div class="offre-contact">
                 <div>Publiée le <span>{{ immobilier.datecreation|date("d/m/Y") }}</span></div>
@@ -218,6 +216,9 @@
                     l'annonceur</div>
         {% endif %}
         </div>
+         <!-- ShareThis BEGIN -->
+                <div class="sharethis-inline-share-buttons col-12"></div>
+            <!-- ShareThis END -->
     </div>
 
 {% endblock %}
