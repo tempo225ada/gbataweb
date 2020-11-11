@@ -1,0 +1,13 @@
+{# app/Resources/TwigBundle/views/Exception/error403.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container" style="margin-bottom: 70px;">
+    <h1 style="color:#097ceb">Accès non autorisé</h1>
+
+    <p>
+        Vous n'avez pas les droits nécéssaire pour acceder à cette page 😎.
+        Si vous pensez que non, faites le nous savoir <a href="{{ path('contact') }}">contact</a>.
+    </p>
+</div>
+{% endblock %}

@@ -3,6 +3,7 @@
 {% block body %}
 
     <div class="container">
+        <h3 style="margin-bottom:20px"> Immobilier </h2>
         <table class="table">
             <thead>
                 <tr>
@@ -24,7 +25,7 @@
                         <td> {{ demande.commune}} </td>
                         <td> {{ demande.piece}} </td>
                         <td> {{ demande.budget }} </td>
-                        <td> <a href="{{ path('admin_demande_immo_edit',{ id:demande.id}) }}" class="btn btn-primary">
+                        <td> <a href="{{ path('user_demande_immo_edit',{ id:demande.id}) }}" class="btn btn-primary">
                                 Modifier</a> </td>
                     </tr>
                 </tbody>

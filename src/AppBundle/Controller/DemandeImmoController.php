@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
 use AppBundle\Entity\DemandeImmo;
 use AppBundle\Form\DemandeImmoType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -70,8 +71,8 @@ class DemandeImmoController extends Controller
             $repository
                        ->andWhere('di.piece = :piece')
                        ->setParameter('piece',$request->query->getAlnum('piece'));
-            $pagination = $repository->getQuery();
-            $pagination = $pagination->getResult();
+            $demandes = $repository->getQuery();
+            $demandes = $demandes->getResult();
         }
 
         elseif($request->query->getAlnum('commune')) {
@@ -79,8 +80,8 @@ class DemandeImmoController extends Controller
             $repository
                        ->andWhere('di.commune = :commune')
                        ->setParameter('commune',$request->query->getAlnum('commune'));
-            $pagination = $repository->getQuery();
-            $pagination = $pagination->getResult();
+            $demandes = $repository->getQuery();
+            $demandes = $demandes->getResult();
         }
 
         elseif($request->query->getAlnum('budgetmin')) {
@@ -88,8 +89,8 @@ class DemandeImmoController extends Controller
             $repository
                        ->andWhere('di.budget >= :budgetmin')
                        ->setParameter('budgetmin',$request->query->getAlnum('budgetmin'));
-            $pagination = $repository->getQuery();
-            $pagination = $pagination->getResult();
+            $demandes = $repository->getQuery();
+            $demandes = $demandes->getResult();
         }
         
         elseif($request->query->getAlnum('budgetmax')) {
@@ -97,24 +98,30 @@ class DemandeImmoController extends Controller
             $repository
                        ->andWhere('di.budget <= :budgetmax')
                        ->setParameter('budgetmax',$request->query->getAlnum('budgetmax'));
-            $pagination = $repository->getQuery();
-            $pagination = $pagination->getResult();
+            $demandes = $repository->getQuery();
+            $demandes = $demandes->getResult();
         }
 
         else{
-            
-            $pagination = $repository->findAll();
+            $demandes = $repository->findAll();
+            $pagination = $paginator->paginate($demandes,
+            $request->query->getInt('page', 1), 
+            20 
+             );
         }
+
+        $pagination = $paginator->paginate($demandes,
+            $request->query->getInt('page', 1), 
+            15 
+        );
 
         return $this->render('admin/list/list_demande_immo.html.twig', [
             'demandes' => $pagination
         ]);
     }
 
-
-
     /**
-     * @Route("/admin/demande/immo/{id}/edit", name="admin_demande_immo_edit")
+     * @Route("/user/demande/immo/{id}/edit", name="user_demande_immo_edit")
      * @param DemandeImmo $demandeImmo
      * @param Request $request
      * @param EntityManagerInterface $em
@@ -122,6 +129,39 @@ class DemandeImmoController extends Controller
      */
 
     public function edit(DemandeImmo $demandeImmo, Request $request, EntityManagerInterface $em) {
+
+        if($demandeImmo->getUtilisateur() !== $this->getUser()){
+            $this->addFlash('danger', 'Vous n\'avez pas les accès pour modifier cette annonce, cette offre ne vous appartient peut être pas');
+            return $this->redirectToRoute('user_list_immo');
+        }
+
+        $form = $this->createForm(DemandeImmoType::class, $demandeImmo);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $demandeImmo= $form->getData();
+            $em->persist($demandeImmo);
+            $em->flush();
+
+            return $this->redirectToRoute('user_list_demande_immo');
+        }
+
+        return $this->render('admin/edit/edit_demande_immo.html.twig', [
+           'form'=>$form->createView()
+        ]);
+
+    }
+
+
+     /**
+     * @Route("/admin/demande/immo/{id}/edit", name="admin_demande_immo_edit")
+     * @param DemandeImmo $demandeImmo
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+
+    public function editAdmin(DemandeImmo $demandeImmo, Request $request, EntityManagerInterface $em) {
 
         $form = $this->createForm(DemandeImmoType::class, $demandeImmo);
         $form->handleRequest($request);
