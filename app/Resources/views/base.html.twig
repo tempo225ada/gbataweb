@@ -60,7 +60,7 @@
                             <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                             <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
                         </svg></a> </li>
-                        <li class="navbar-nav connexion name"><a class="a" href="/logout">Hello {{ app.user.username }}</a></li>
+                        <li class="navbar-nav connexion name"><a class="a" href="{{path('edit_profile_user')}}">Hello {{ app.user.username }}</a></li>
                         
                     {% else %}
                         <li class="navbar-nav"><a class="a" href="/login">Se connecter <i class="fas fa-sign-in-alt"></i></a></li>
