@@ -1,235 +1,226 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: BRILLIANT Bootstrap Admin Template
-Version: 4.5.6
-Author: WebThemez
-Website: http://www.webthemez.com/ 
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta content="" name="description" />
-    <meta content="webthemez" name="author" />
-     <link rel="icon" href="/upload/slide/logo_gbata.ico">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/upload/slide/logo_gbata.ico">
     <title>GBATA SERVICES</title>
-    <!-- Bootstrap Styles-->
+
+    <!-- Custom fonts for this template-->
+    <link href="{{asset('assets/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+      <!-- Bootstrap Styles-->
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" />
     <!-- FontAwesome Styles-->
     <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet" />
-    <!-- Morris Chart Styles-->
-    <link href="{{ asset('assets/js/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
     <!-- Custom Styles-->
      <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/custom-styles.css') }}" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="{{ asset('assets/js/Lightweight-Chart/cssCharts.css') }}"> 
-       <script type="text/javascript" src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.15.1/basic/ckeditor.js"></script>
+    
+
 </head>
 
-<body class="admin">
+<body id="page-top">
+
+    <!-- Page Wrapper -->
     <div id="wrapper">
-        <nav class="navbar navbar-default top-navbar" role="navigation">
-            <div class="navbar-header">
-               
-                <a class="navbar-brand" href="/"><strong><i class="icon fa fa-home"></i> GBATA SERVICE</strong></a>
-                
-        <div id="sideNav" href="">
-            <a href="/">
-                <i class="fa fa-home"></i>
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">GBATA</div>
             </a>
-        </div>
-            </div>
 
-            <ul class="nav navbar-top-links navbar-right">
-                
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="{{path('edit_profile_user')}}"><i class="fa fa-user fa-fw"></i>Profile</a>
-                        </li>
-                       <!-- <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a> -->
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-        </nav>
-        <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
-                    <li>
-                        <a class="active-menu" href="{{ path('administration') }}"><i class="fa fa-dashboard"></i> Tableau de board</a>
-                    </li>
-                    
-                     
-                     <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Listes<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            {% if is_granted('ROLE_ADMIN') %} 
-                                <li>
-                                    <a href="{{path('admin_list_immo')}}">Offres</a>
-                                </li>
-                                
-                                <li>
-                                    <a href="{{path('list_commune')}}">Communes</a>
-                                </li>
-                                <li>
-                                    <a href="{{path('list_typebien')}}">Type bien</a>
-                                </li>
-                                <li>
-                                    <a href="{{path('list_user')}}">Utilisateur</a>
-                                </li>
-                                 <li>
-                                <a href="{{path('admin_list_demande_immo')}}">Toutes les demandes</a>
-                                 </li>
-                                {% endif %}
-                                
-                                <li>
-                                    <a href="{{path('user_list_demande_immo')}}">Mes Demandes</a>
-                                </li>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Administration</span></a>
+            </li>
 
-                                {% if is_granted('ROLE_ANNONCEUR') %} 
-                                <li>
-                                    <a href="{{path('user_list_immo')}}">Mes offres</a>
-                                    
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </li>   
-                            
-                         
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Liste</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
 
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Ajouter <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
+                        {% if is_granted('ROLE_ADMIN') %} 
+                            <a class="collapse-item" href="{{path('admin_list_immo')}}">Les offres</a>
+                            <a class="collapse-item" href="{{path('list_commune')}}">Communes</a>    
+                            <a class="collapse-item" href="{{path('list_typebien')}}">Type bien</a>
+                            <a class="collapse-item" href="{{path('list_user')}}">Utilisateurs</a>
+                            <a class="collapse-item" href="{{path('admin_list_demande_immo')}}">Les demandes</a>
+                        {% endif %}
 
+                            <a class="collapse-item" href="{{path('user_list_demande_immo')}}">Mes Demandes</a>
                         {% if is_granted('ROLE_ANNONCEUR') %} 
-                            <li>
-                                <a href="{{path('add_immobilier')}}">Offres</a>
-                            </li>
+
+                            <a class="collapse-item" href="{{path('user_list_immo')}}">Mes offres</a> 
+                        {% endif %}
+
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+             <!-- Heading -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesAjout"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Ajouter</span>
+                </a>
+                <div id="collapsePagesAjout" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {% if is_granted('ROLE_ANNONCEUR') %} 
+                            <a class="collapse-item" href="{{path('add_immobilier')}}">Immobilier</a>
                         {% else %}
                             
                         {% endif %}
 
                          {% if is_granted('ROLE_ADMIN') %} 
-
-                              <li>
-                                <a href="{{path('add_commune')}}">Commune</a>
-                            </li>
-                            <li>
-                                <a href="{{path('type_bien')}}">Type bien</a>
-                            </li>
+                            <a class="collapse-item" href="{{path('add_commune')}}">Commune</a>
+                            
+                            <a class="collapse-item" href="{{path('type_bien')}}">Type bien</a>
+                            
                         {% else %}
+
                         {% endif %}
+                        <h6 class="collapse-header">Demande</h6>
+                        <a class="collapse-item" href="{{path('add_demande_immo')}}">Immobilier</a>
+                    </div>
+                </div>
+            </li>
 
-                          
-                            <li>
-                                <a href="#">Demande<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="{{path('add_demande_immo')}}">Immobilier</a>
-                                    </li>
-                            <!--    <li>
-                                        <a href="#">Automobile</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Autres</a>
-                                    </li> -->
 
-                                </ul>
 
-                            </li>
-                        </ul>
-                    </li>
-                  
-                </ul>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-        </nav>
-        <!-- /. NAV SIDE  --> 
-        <div id="page-wrapper">
+        </ul>
+        <!-- End of Sidebar -->
 
-          <div class="header"> 
-          
-            <h1 class="page-header">
-                Administration <small>Bienvenue... <span style="text-transform:capitalize">{{ app.user.username }} </span></small>
-            </h1>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ app.user.username }}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="{{ asset('upload/image/undraw_profile.svg') }}">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{path('edit_profile_user')}}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('logout') }}" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                   Déconnexion
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
             
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
+                <div class="container">
+                
+                    {% block body %} 
+                    
+                        
+                    {% endblock %}
                 </div>
-            {% endfor %}
+                <!-- /.container-fluid -->
 
-            {% for message in app.flashes('danger') %}
-                <div class="alert alert-danger">
-                    {{ message }}
+            </div>
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Cette interface est basée sur le template SB Admin V2</span>
+                    </div>
                 </div>
-            {% endfor %}
-                                    
-        </div>
-        
+            </footer>
+            <!-- End of Footer -->
 
-        {% block body %} 
-         
-      
-            
-        {% endblock %}
         </div>
+        <!-- End of Content Wrapper -->
 
-    
-        <!-- /. PAGE WRAPPER  -->
     </div>
-    <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    <!-- jQuery Js -->
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
     {% block javascripts %}
- 
-    <!-- Bootstrap Js -->
-    <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+           <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
-    <!-- LIST JS -->
-     
-    <!-- Metis Menu Js -->
-    <script src="{{ asset('assets/js/jquery.metisMenu.js') }}"></script>
-    <!-- Morris Chart Js 
-    <script src="{{ asset('assets/js/morris/raphael-2.1.0.min.js') }}"></script>
-   <script src="{{ asset('assets/js/morris/morris.js') }}"></script> -->
-    
-    
-    <script src="{{ asset('assets/js/easypiechart.js') }}"></script>
-    <script src="{{ asset('assets/js/easypiechart-data.js') }}"></script>
-    
-     <script src="{{ asset('assets/js/Lightweight-Chart/jquery.chart.js') }}"></script>
-    
-    <!-- Custom Js -->
-    <script src="{{ asset('assets/js/custom-scripts.js') }}"></script>
-
-
-      
-    <!-- Chart Js 
-    <script type="text/javascript" src="{{ asset('assets/js/Chart.min.js') }}"></script>  
-    <script type="text/javascript" src="{{ asset('assets/js/chartjs.js') }}"></script> -->
-
+        <!-- Core plugin JavaScript-->
+        <script src="{{ asset('assets/jquery/jquery.easing.min.js') }}"></script>
     {% endblock %}
 
 </body>
 
 </html>
-

@@ -44,31 +44,29 @@ class ImmobilierController extends Controller
             if($image_immo || $image_immo2 || $image_immo3) {
 
                 $originalFilename = $fileUploader->upload($image_immo);
-                
                 $originalFilename2 = $fileUploader->upload($image_immo2);
-
                 $originalFilename3 = $fileUploader->upload($image_immo3);
-                
-                $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-                //$user = $this->getUser()->getId();
-                $user = $this->getUser();
-                $immobilier->setUtilisateur($user);
 
                 $immobilier->setImageImmo($originalFilename);
                 $immobilier->setImageImmo2($originalFilename2);
                 $immobilier->setImageImmo3($originalFilename3);
-
-                $immobilier->setDatecreation(new \DateTime());
-                $immobilier->setDatemodifcation(new \DateTime());
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($immobilier);
-                $em->flush();
-                $this->addFlash('success', 'Votre offre a été enregistrée avec succès');
-
-                return $this->redirectToRoute('user_list_immo');
-             
             }
+                
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+            //$user = $this->getUser()->getId();
+            $user = $this->getUser();
+            $immobilier->setUtilisateur($user);
+
+            $immobilier->setDatecreation(new \DateTime());
+            $immobilier->setDatemodifcation(new \DateTime());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($immobilier);
+            $em->flush();
+            $this->addFlash('success', 'Votre offre a été enregistrée avec succès');
+
+            return $this->redirectToRoute('user_list_immo');
+
 
         }
 
@@ -231,7 +229,7 @@ class ImmobilierController extends Controller
         // Recherche d'un seul article par son titre
 
         $username = $repositoryUser->findOneBy(['username' => $user_id->__toString()]);
-        $usermail = $repositoryUser->findOneBy(['email' => $user_id->__toString()]);
+       // $usermail = $repositoryUser->findOneBy(['email' => $user_id->__toString()]);
       
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
@@ -247,6 +245,38 @@ class ImmobilierController extends Controller
         return $this->render('pages/immobilier_contenu.html.twig', [
             'immobilier' =>  $immobilier_contenu,
             'user_name'=> $username
+        ]);
+
+    }
+
+     /**
+     * @Route("/user/immobilier/{username}", name="user_immobilier")
+     */
+
+    public function user_immobilier($username,Immobilier $immobilier,User $user) {
+    
+    
+        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
+        $user_id = $immobilier->getUtilisateur();
+        $id_user = $user->getId(); 
+        // Recherche d'un seul article par son titre
+
+        $username = $repositoryUser->findOneBy(['username' => $user_id->__toString()]);
+
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository('AppBundle:Immobilier');
+        $immobilier_contenu = $repository->findAll($id_user);
+
+        if(!$immobilier_contenu) {
+            // S'il y a aucun article, nous affichons une exception
+            throw $this->createNotFoundException('l\'offre n\'existe sans doute pas');
+        }
+
+        // Sinon si l'article existe
+
+        return $this->render('pages/immobilier_contenu.html.twig', [
+            'immobilier' =>  $immobilier_contenu,
+            'user_name' => $username
         ]);
 
     }

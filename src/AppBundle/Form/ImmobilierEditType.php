@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ImmobilierEditType extends AbstractType
 {
@@ -37,7 +38,7 @@ class ImmobilierEditType extends AbstractType
                 ->add('chambre')
                 ->add('douche')
                 ->add('prix')
-                ->add('description')
+                ->add('description',TextareaType::class, array('attr' => array('class' => 'ckeditor')))
                 ->add('etat')
                 ->add('image', FileType::class, [
                     'mapped' => false,

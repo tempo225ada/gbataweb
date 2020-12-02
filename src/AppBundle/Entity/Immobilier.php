@@ -129,7 +129,7 @@ class Immobilier
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $imageImmo;
 
@@ -156,7 +156,7 @@ class Immobilier
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $imageImmo2;
 
@@ -183,7 +183,7 @@ class Immobilier
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $imageImmo3;
 

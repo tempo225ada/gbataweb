@@ -1,3 +1,32 @@
+.contact-agence {
+    background-color: #25d366;
+    padding: 20px 1% 5px 1%;
+    text-align: center;
+    color: #ffffffc4;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.col-12.description-immo {
+    margin-bottom: 50px;
+}
+
+.contact-agence .fas.fa-phone-alt {
+    font-size: 20px !important;
+}
+
+.contact-agence i {
+    text-align: center;
+    color: #fff !important;
+    font-size: 24px !important;
+    letter-spacing: 13px;
+}
+
+.text-contact {
+    color: #fff;
+}
+
 .logout a {
     color: #833ab4 !important;
     font-weight: bold;
@@ -670,7 +699,7 @@ font-weight: bold;
 
 .col-12.type-immo-contenu {
     position: relative;
-    margin-bottom: -49px;
+    margin-bottom: -50px;
     z-index: 2;
 }
 
@@ -680,6 +709,10 @@ font-weight: bold;
 color: #007bff;
 text-align: right;
 margin-right: 15px;
+}
+
+.col-12.comm-immo {
+    text-align: right;
 }
 
 .col-12.titre-immo {
@@ -717,7 +750,7 @@ margin-right: 15px;
 
 .col-12.type-immo-front {
     position: relative;
-    margin-bottom: -25px;
+    margin-bottom: -26px;
     z-index: 2;
     padding: 0 0;
 }
@@ -1241,4 +1274,25 @@ background-color: #ffd119;
         margin-top: -45px;
         margin-bottom: 25px;
     }
+
   }
+
+  @media (max-width:1500px){
+
+  .bi.bi-chevron-right.slick-arrow {
+    right: -1.7% !important; 
+    }
+
+    .bi.bi-chevron-left.slick-arrow {
+        left: 88% !important;
+    }
+}
+
+  @media (min-width:1600px){
+
+  .slick-list.draggable img {
+    max-width: 100% !important;
+    max-height: 650px !important;
+    }
+
+}

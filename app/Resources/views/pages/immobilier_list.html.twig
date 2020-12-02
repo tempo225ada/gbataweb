@@ -56,7 +56,11 @@
                     </div>
 
                     <div class="col-12 image-immo-front">
-                        <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" style="height:230px" />
+                        {% if immobilier.imageImmo %}
+                            <img src="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" style="height:230px" />
+                        {% else %}
+                            <img src="{{ asset('upload/image/gbatad1.jpeg') }}" style="height:230px" />
+                        {% endif %}
                     </div>
 
                     <div class="col-12 autre-offre">

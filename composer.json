@@ -18,6 +18,7 @@
         "captcha-com/symfony-captcha-bundle": "4.*",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "friendsofsymfony/ckeditor-bundle": "^2.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^2.8",
         "sensio/distribution-bundle": "^5.0.19",
@@ -51,7 +52,7 @@
     },
     "config": {
         "platform": {
-            "php": "5.5.9"
+            "php": "7.1"
         },
         "sort-packages": true
     },

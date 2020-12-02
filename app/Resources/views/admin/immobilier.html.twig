@@ -1,6 +1,12 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
+
+<script type="text/javascript">
+        $(function() {
+            $('textarea.ckeditor').ckeditor();
+        });
+</script>
     <div class="container">
         <div class="row">
             {{ form_start(form) }}
@@ -14,8 +20,8 @@
                 {{ form_row(form.chambre) }}
                 {{ form_row(form.douche) }}
                 {{ form_row(form.prix) }}
-                {{ form_row(form.description) }}
-                <p class="alert alert-warning">Veuillez uploader des images jpeg ou jpg, poids maximum 2Mo. les 3 champs photo sont obligatoires</p>
+                {{ form_row(form.description) | raw  }}
+                <p class="alert alert-warning">Veuillez uploader des images jpeg ou jpg, poids maximum 2Mo.</p>
                 <div class="col-sm-4">{{ form_row(form.image) }}</div> 
                 <div class="col-sm-4">{{ form_row(form.image2) }}</div> 
                 <div class="col-sm-4">{{ form_row(form.image3) }}</div>  
@@ -23,4 +29,5 @@
             {{ form_end(form) }}
         </div>
     </div>
+
 {% endblock %}

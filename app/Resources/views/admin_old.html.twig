@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: BRILLIANT Bootstrap Admin Template
+Version: 4.5.6
+Author: WebThemez
+Website: http://www.webthemez.com/ 
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="" name="description" />
+    <meta content="webthemez" name="author" />
+     <link rel="icon" href="/upload/slide/logo_gbata.ico">
+    <title>GBATA SERVICES</title>
+    <!-- Bootstrap Styles-->
+    <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="{{ asset('assets/js/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
+    <!-- Custom Styles-->
+     <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/custom-styles.css') }}" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="{{ asset('assets/js/Lightweight-Chart/cssCharts.css') }}"> 
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.15.1/basic/ckeditor.js"></script>
+</head>
+
+<body class="admin">
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+               
+                <a class="navbar-brand" href="/"><strong><i class="icon fa fa-home"></i> GBATA SERVICE</strong></a>
+                
+        <div id="sideNav" href="">
+            <a href="/">
+                <i class="fa fa-home"></i>
+            </a>
+        </div>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="{{path('edit_profile_user')}}"><i class="fa fa-user fa-fw"></i>Profile</a>
+                        </li>
+                       <!-- <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a> -->
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="active-menu" href="{{ path('administration') }}"><i class="fa fa-dashboard"></i> Tableau de board</a>
+                    </li>
+                    
+                     
+                     <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> Listes<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            {% if is_granted('ROLE_ADMIN') %} 
+                                <li>
+                                    <a href="{{path('admin_list_immo')}}">Offres</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="{{path('list_commune')}}">Communes</a>
+                                </li>
+                                <li>
+                                    <a href="{{path('list_typebien')}}">Type bien</a>
+                                </li>
+                                <li>
+                                    <a href="{{path('list_user')}}">Utilisateur</a>
+                                </li>
+                                 <li>
+                                <a href="{{path('admin_list_demande_immo')}}">Toutes les demandes</a>
+                                 </li>
+                                {% endif %}
+                                
+                                <li>
+                                    <a href="{{path('user_list_demande_immo')}}">Mes Demandes</a>
+                                </li>
+
+                                {% if is_granted('ROLE_ANNONCEUR') %} 
+                                <li>
+                                    <a href="{{path('user_list_immo')}}">Mes offres</a>
+                                    
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>   
+                            
+                         
+
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> Ajouter <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+
+                        {% if is_granted('ROLE_ANNONCEUR') %} 
+                            <li>
+                                <a href="{{path('add_immobilier')}}">Immobilier</a>
+                            </li>
+                        {% else %}
+                            
+                        {% endif %}
+
+                         {% if is_granted('ROLE_ADMIN') %} 
+
+                              <li>
+                                <a href="{{path('add_commune')}}">Commune</a>
+                            </li>
+                            <li>
+                                <a href="{{path('type_bien')}}">Type bien</a>
+                            </li>
+                        {% else %}
+                        {% endif %}
+
+                          
+                            <li>
+                                <a href="#">Demande<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="{{path('add_demande_immo')}}">Immobilier</a>
+                                    </li>
+                            <!--    <li>
+                                        <a href="#">Automobile</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Autres</a>
+                                    </li> -->
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                  
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  --> 
+        <div id="page-wrapper">
+
+          <div class="header"> 
+          
+            <h1 class="page-header">
+                Administration <small>Bienvenue... <span style="text-transform:capitalize">{{ app.user.username }} </span></small>
+            </h1>
+            
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% for message in app.flashes('danger') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+                                    
+        </div>
+        
+
+        {% block body %} 
+         
+
+            
+        {% endblock %}
+        </div>
+
+    
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    {% block javascripts %}
+ 
+    <!-- Bootstrap Js -->
+    <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+    <!-- LIST JS -->
+     
+    <!-- Metis Menu Js -->
+    <script src="{{ asset('assets/js/jquery.metisMenu.js') }}"></script>
+    <!-- Morris Chart Js 
+    <script src="{{ asset('assets/js/morris/raphael-2.1.0.min.js') }}"></script>
+   <script src="{{ asset('assets/js/morris/morris.js') }}"></script> -->
+    
+    
+    <script src="{{ asset('assets/js/easypiechart.js') }}"></script>
+    <script src="{{ asset('assets/js/easypiechart-data.js') }}"></script>
+    
+     <script src="{{ asset('assets/js/Lightweight-Chart/jquery.chart.js') }}"></script>
+    
+    <!-- Custom Js -->
+    <script src="{{ asset('assets/js/custom-scripts.js') }}"></script>
+
+
+      
+    <!-- Chart Js 
+    <script type="text/javascript" src="{{ asset('assets/js/Chart.min.js') }}"></script>  
+    <script type="text/javascript" src="{{ asset('assets/js/chartjs.js') }}"></script> -->
+
+    {% endblock %}
+
+</body>
+
+</html>
+

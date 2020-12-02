@@ -16,11 +16,43 @@
         {% endblock %}
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f97093e968068001900dcf8&product=sop' async='async'></script>
     
-    <meta property="og:title" content="GBATA, service d'annonce immobilière par SMS" />
-    <meta property="og:url" content="https://www.gbata.xyz" />
-    <!--<meta property="og:image" content="http://sharethis.com/images/logo.jpg" />
-   <meta property="og:description" content="GBATA votre service d'annoce immobilière par SMS. Inscrivez vous et postez votre demande" />-->
-   <meta property="og:site_name" content="Gbata" />
+
+    <!-- Primary Meta Tags -->
+    <title>Gbata , service d'annonce immobilière par sms</title>
+    <meta name="title" content="Gbata , service d'annonce immobilière par sms">
+    <meta name="description" content="Trouvez vous facilement un bien immobilier, sans vous déplacer et en économisant">
+
+    {% if app.request.attributes.get('_route')  == 'contenu_immobilier' %}
+        <!-- Open Graph / Facebook Page contenu immobilier-->
+        <meta property="og:title" content="{{ immobilier.titre }} " />
+        <meta property="og:url" content="https://gbata.xyz/offres/immobilier/{{ immobilier.id }}" />
+        <meta property="og:image" content="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" />
+        <meta property="og:description" content="{{ immobilier.description }} " />
+        <meta property="og:type" content="website">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://gbata.xyz/offres/immobilier/{{ immobilier.id }}">
+        <meta property="twitter:title" content="{{ immobilier.titre }}">
+        <meta property="twitter:description" content="{{ immobilier.description }}">
+        <meta property="twitter:image" content="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}">
+
+    {% else %}
+          <!-- Open Graph / Facebook -->
+        <meta property="og:title" content="GBATA, service d'annonce immobilière par SMS" />
+        <meta property="og:url" content="https://www.gbata.xyz" />
+        <meta property="og:image" content="{{ asset('upload/image/image-defaut.jpg') }}" />
+        <meta property="og:description" content="GBATA votre service d'annoce immobilière par SMS. Inscrivez vous et postez votre demande" />
+        <meta property="og:type" content="website">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://www.gbata.xyz">
+        <meta property="twitter:title" content="GBATA, service d'annonce immobilière par SMS">
+        <meta property="twitter:description" content="GBATA votre service d'annoce immobilière par SMS. Inscrivez vous et postez votre demande">
+        <meta property="twitter:image" content="{{ asset('upload/image/image-defaut.jpg') }}">
+    {% endif %}
+    
 
     <!-- Matomo --> 
             <script type="text/javascript"> 
@@ -35,6 +67,7 @@
     
     </head>
     <body class="base">
+    
     <div class="top col">
         <div class="row">
             <div class="col">

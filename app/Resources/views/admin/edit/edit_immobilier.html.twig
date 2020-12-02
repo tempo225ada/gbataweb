@@ -1,6 +1,11 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
+<script type="text/javascript">
+        $(function() {
+            $('textarea.ckeditor').ckeditor();
+        });
+</script>
     <div class="container mt-4">
         {{ form_start(form) }}
             {{ form_row(form.titre) }}

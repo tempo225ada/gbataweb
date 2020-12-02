@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use AppBundle\Entity\Immobilier;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -46,7 +47,7 @@ class ImmobilierType extends AbstractType
                 ->add('chambre')
                 ->add('douche')
                 ->add('prix')
-                ->add('description')
+                ->add('description',TextareaType::class, array('attr' => array('class' => 'ckeditor')))
                 ->add('utilisateur',HiddenType::class)
                 ->add('image', FileType::class, [
                     'mapped' => false,
