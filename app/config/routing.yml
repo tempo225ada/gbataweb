@@ -28,3 +28,10 @@ leprojet:
     defaults:
         _controller: FrameworkBundle:Template:template
         template:    pages/le_projet.html.twig
+
+google:
+    path: /google1bdf46255a3a1bb0.html
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    pages/google1bdf46255a3a1bb0.html.twig
+

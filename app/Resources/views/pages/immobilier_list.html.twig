@@ -80,9 +80,11 @@
                         </div>
 
                         <div class="col-12 loyer">
-                            <span class="prix">{{ immobilier.prix }} </span>  <span>fcfa</span>
-                            {% if immobilier.type == 'location' %}
+                            <span class="prix">{{immobilier.prix|number_format(0, '.', '.')}}</span>  <span>fcfa</span>
+                            {% if immobilier.type == 'location' and immobilier.typebien != 'Residence'  %}
                                 <span class="mois">/mois</span>
+                            {% elseif immobilier.typebien == 'Residence' and immobilier.type == 'location' %}
+                            <span class="mois">/jour</span>
                             {% endif %}
                         </div>
 
@@ -101,20 +103,6 @@
 
         <nav aria-label="Page navigation example">{{ knp_pagination_render(immobiliers) }}</nav> 
 
-      
-
-         <script> 
-                var tout_prix = document.querySelectorAll(".prix");
-
-                for (var i=0, tout_prix.length, i++)
-                    {
-                        function formatNumber (i) {
-                            return i.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-                        }
-                        var prix = formatNumber(i); 
-                        document.querySelector(".prix").innerHTML = prix;
-                    }                             
-                      </script>
        
     </div>
     </div>

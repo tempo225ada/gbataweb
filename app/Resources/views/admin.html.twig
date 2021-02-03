@@ -27,8 +27,6 @@
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <script type="text/javascript" src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
     <script src="//cdn.ckeditor.com/4.15.1/basic/ckeditor.js"></script>
     
 
@@ -102,6 +100,7 @@
                 <div id="collapsePagesAjout" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {% if is_granted('ROLE_ANNONCEUR') %} 
+                         <h6 class="collapse-header">Offres</h6>
                             <a class="collapse-item" href="{{path('add_immobilier')}}">Immobilier</a>
                         {% else %}
                             
@@ -168,7 +167,7 @@
                                 </a>
                                 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ path('logout') }}" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{{ path('logout') }}">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                    Déconnexion
                                 </a>

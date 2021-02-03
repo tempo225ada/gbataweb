@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <title>{% block title %}Gbata bienvenue{% endblock %}</title>
         <link rel="icon" href="/upload/slide/logo_gbata.ico">
@@ -27,14 +28,14 @@
         <meta property="og:title" content="{{ immobilier.titre }} " />
         <meta property="og:url" content="https://gbata.xyz/offres/immobilier/{{ immobilier.id }}" />
         <meta property="og:image" content="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}" />
-        <meta property="og:description" content="{{ immobilier.description }} " />
+        <meta property="og:description" content="{{ immobilier.description | raw}} " />
         <meta property="og:type" content="website">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="https://gbata.xyz/offres/immobilier/{{ immobilier.id }}">
         <meta property="twitter:title" content="{{ immobilier.titre }}">
-        <meta property="twitter:description" content="{{ immobilier.description }}">
+        <meta property="twitter:description" content="{{ immobilier.description | raw}}">
         <meta property="twitter:image" content="{{ asset('upload/image_immo/' ~ immobilier.imageImmo) }}">
 
     {% else %}
@@ -67,18 +68,20 @@
     
     </head>
     <body class="base">
+   <!-- <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v9.0" nonce="LUsVA8Ny"></script>-->
     
     <div class="top col">
         <div class="row">
-            <div class="col">
-                <span class="tel"><i class="fas fa-phone-alt"></i> (+225) 45 45 28 61</span>
+            <div class="col-12 col-md-6 email-top">
+                <span class="tel"><i class="fas fa-phone-alt"></i> (+225) 05 45 45 28 61</span>
                 <span class="mail"><i class="fas fa-envelope"></i> info@gbata.xyz</span>
                 {% if is_granted('ROLE_USER') %} 
                     <span class="logout"><a class="a" href="/logout"> - se déconnecter </span>
                         
                 {% endif %}
             </div>
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <ul class="navbar-nav" style="float:right;display: block;">
                     {% if is_granted('ROLE_ANNONCEUR') %} 
                         <li class="navbar-nav connexion"><a class="nav-link" href="{{ path('add_immobilier') }}">Publier une offre<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -174,7 +177,7 @@
                             <div class="titre-footer">A propos</div>
                             <div class="content-footer propos">
                                 <p>Gbata est un service vous permettant de recevoir des offres par sms</p>
-                                <p>Tel: +225 45 452 861</p>
+                                <p>Tel: +225 05 45 45 28 61</p>
                                 <p>Email: info@gbata.xyz</p>
                                 <p><a href="https://lotissement.ci/" target="_blank" style="color:#19A1DA;">Lotissement.ci <i class="fas fa-external-link-alt"></i></a></p>
                             </div>
@@ -190,12 +193,8 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-12 social">
-                            <div class="row">
-                                <div class="social-text col-lg-6 col-12 "><p>SUIVEZ NOUS</p></div>
-                                <a href="https://twitter.com/gbataservice" target="_blank" class="col-lg-6 col-12 twitt"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/gbataservice" target="_blank" class="col-lg-6 col-12 face"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="col-lg-6 col-12 insta"><i class="fab fa-instagram"></i></a>
-                            </div>
+                            <div class="titre-footer" style="color:#fff">Likez notre page</div>
+                            <!-- <div class="fb-page" data-href="https://www.facebook.com/gbataservice" data-tabs="timeline" data-width="" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/gbataservice" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/gbataservice">Gbata</a></blockquote></div>-->
                         </div>
                         
                     </div>

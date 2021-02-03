@@ -59,10 +59,10 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=8, unique=true)
+     * @ORM\Column(type="string", length=10, unique=true)
      * @Assert\Length(
-     *      min = 8,
-     *      max = 8,
+     *      min = 10,
+     *      max = 10,
      *      minMessage = "Votre numéro de téléphone est trop court, il doît être du type: xxxxxxxx",
      *      maxMessage = "Votre numéro de téléphone est trop court, il doît être du type: xxxxxxxx"
      * )

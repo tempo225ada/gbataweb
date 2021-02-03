@@ -41,8 +41,8 @@ class ImmobilierController extends Controller
             $image_immo = $form['image']->getData();
             $image_immo2 = $form['image2']->getData();
             $image_immo3 = $form['image3']->getData();
-            if($image_immo || $image_immo2 || $image_immo3) {
-
+            if($image_immo || $image_immo2 || $image_immo3)
+            {
                 $originalFilename = $fileUploader->upload($image_immo);
                 $originalFilename2 = $fileUploader->upload($image_immo2);
                 $originalFilename3 = $fileUploader->upload($image_immo3);
@@ -94,7 +94,7 @@ class ImmobilierController extends Controller
         // Pagination des offre avec KNP pagination
         $pagination = $paginator->paginate($immobiliers,
                              $request->query->getInt('page', 1), 
-                             9 
+                             18 
                         );
 
         return $this->render('pages/immobilier_list.html.twig', [
@@ -118,7 +118,7 @@ class ImmobilierController extends Controller
 
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
-        //$immobiliers = $repository->findAll();
+        $immobiliers_total = $repository->findAll(array(), array('id' => 'DESC'));
         $immobiliers = $repository->findAllImmobilier($search);
 
         $pagination = $paginator->paginate($immobiliers,
@@ -127,6 +127,7 @@ class ImmobilierController extends Controller
    );
 
         return $this->render('admin/list/list_immobilier.html.twig', [
+            'totalimmo' => $immobiliers_total,
             'immobiliers' => $pagination,
             'form' => $form->createView()
         ]);
@@ -138,17 +139,23 @@ class ImmobilierController extends Controller
      */
 
     public function user_list_immo(Request $request, PaginatorInterface $paginator) {
+        $search = new ImmobilierSearch();
+        $form = $this->createForm(ImmobilierSearchType::class, $search);
+        $form->handleRequest($request);
+
         $user = $this->getUser();
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('AppBundle:Immobilier');
-        $immobilier = $repository->findByUtilisateur($user);
+        $immobilier = $repository->findByUtilisateur($user, array('id' => 'DESC'));
 
         $pagination = $paginator->paginate($immobilier,
         $request->query->getInt('page', 1), 
-        20 
+        30 
     );
         return $this->render('user/list_immobilier.html.twig', [
-            'immobiliers' =>  $pagination
+            'immobiliers' =>  $pagination,
+            'totalimmo' => $immobilier,
+            'form' => $form->createView()
         ]);
 
     }
@@ -184,7 +191,9 @@ class ImmobilierController extends Controller
         return $this->render('/admin/edit/edit_immobilier.html.twig', [
             'form' => $form->createView()
         ]);
-    } 
+    }
+
+    
 
 
     /**

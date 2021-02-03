@@ -28,7 +28,6 @@ class DemandeImmoController extends Controller
         $form->handleRequest($request);
 
         if ( $form->isSubmitted() && $form->isValid()) {
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($demande);
             $em->flush();
@@ -76,6 +75,7 @@ class DemandeImmoController extends Controller
         }
 
         elseif($request->query->getAlnum('commune')) {
+
             $repository= $repository->createQueryBuilder('di');
             $repository
                        ->andWhere('di.commune = :commune')
@@ -83,6 +83,7 @@ class DemandeImmoController extends Controller
             $demandes = $repository->getQuery();
             $demandes = $demandes->getResult();
         }
+
 
         elseif($request->query->getAlnum('budgetmin')) {
             $repository= $repository->createQueryBuilder('di');
@@ -116,7 +117,8 @@ class DemandeImmoController extends Controller
         );
 
         return $this->render('admin/list/list_demande_immo.html.twig', [
-            'demandes' => $pagination
+            'demandes' => $pagination,
+            'nbre_demande' => $demandes
         ]);
     }
 

@@ -4,6 +4,25 @@
 
 
     <div class="container mt-4">
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Offres</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ totalimmo|length }}  </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
     <h2 class="titre-page"> Vos offres</h2>
     {% if immobiliers | length ==  0 %}
 
@@ -35,9 +54,9 @@
                     <td> {{ immobilier.commune}} </td>
                     <td> {{ immobilier.prix}} </td>
                     <td> {{ immobilier.piece }} </td>
-                    <td> <a href="{{ path('admin_immobilier_edit',{id:immobilier.id})}}" class="btn btn-primary" >Modifier</a> 
+                    <td> <a href="{{ path('admin_immobilier_edit',{id:immobilier.id})}}" class="btn btn-primary" >Edit</a> 
 
-                    <a href="javascript:void(0)" onclick="if(confirm('Voulez vous vraiment supprimer cette offre !')){window.location='{{ path('admin_immobilier_delete',{id:immobilier.id})}}';}" class="btn btn-danger">Supprimer</a>
+                    <a href="javascript:void(0)" onclick="if(confirm('Voulez vous vraiment supprimer cette offre !')){window.location='{{ path('admin_immobilier_delete',{id:immobilier.id})}}';}" class="btn btn-danger">Delete</a>
 
 
                      </td>
